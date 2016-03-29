@@ -1,0 +1,25 @@
+{
+  "name": "TABCommunicate",
+  "version": "0.1.0",
+  "summary": "Uses mulitpeer connectivity to send an object back and forth.",
+  "description": "Uses mulitpeer connectivity to send an object back and forth.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/TABCommunicate",
+  "license": "MIT",
+  "authors": {
+    "Neil": "neil.horton@theappbusiness.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/TABCommunicate.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "TABCommunicate": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

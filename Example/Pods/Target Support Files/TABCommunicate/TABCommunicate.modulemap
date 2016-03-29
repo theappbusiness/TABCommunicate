@@ -1,0 +1,6 @@
+framework module TABCommunicate {
+  umbrella header "TABCommunicate-umbrella.h"
+
+  export *
+  module * { export * }
+}

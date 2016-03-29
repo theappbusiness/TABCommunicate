@@ -1,0 +1,788 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B095FE3FD72A9B135851C12470B899A /* TABCommunicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicate.swift */; };
+		18129C6559CD4987B19A37AC382C7071 /* Pods-TABCommunicate_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D051590435F053274DF5DBE2FF93C /* Pods-TABCommunicate_Example-dummy.m */; };
+		19951AFA89A34E8633C832D3CA4D3F7B /* TABCommunicate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB5D843ECE922547D69219A4F9C4DBC0 /* TABCommunicate.bundle */; };
+		4863A023428981CB33F994188289DC5D /* Pods-TABCommunicate_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95EFAF39CDD235E504BEEC79F772F761 /* Pods-TABCommunicate_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		574050E942CE107A9D55E4102BFBF97E /* TABCommunicateServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260184E56862C1384F2EA3D683417D61 /* TABCommunicateServiceManager.swift */; };
+		8BA2558F65C6FF26B909864A479C4ECE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		968CE6EB4E04CBAD8E8EAFDDB86D47E3 /* TABCommunicate-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426547A75DEE6BE129A2BB0E0B696DA /* TABCommunicate-dummy.m */; };
+		9CF0EE2C1CD5EA41F40A33F465753B80 /* Pods-TABCommunicate_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7E4A40DCD17D0F5F68B5AB7B4A775F /* Pods-TABCommunicate_Tests-dummy.m */; };
+		AA4A5965FD8F2E5B1431558C2188BF34 /* TABCommunicate-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F25CA12E4D9CB7FAA654657FCD93BE7C /* TABCommunicate-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BDA15F82FE8EBB216F6C984C87360F23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		C696ABCAE33EB7AEEB6BFBAA68D7990F /* Pods-TABCommunicate_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C36A02381215E9C0A03AD02576B1B840 /* Pods-TABCommunicate_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC9738850BF919F70F55D8385EDED463 /* TABCommunicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CC23F42B7C95A1D36A6231742A02A7 /* TABCommunicatable.swift */; };
+		CF10BFE9842B2A2A88B7CD095F7FF8B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0876323487A7ED85636232333CAAF0F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F3C8A64C3C5A26FC68ADCF2402765B7;
+			remoteInfo = "TABCommunicate-TABCommunicate";
+		};
+		3AC88C09E5227F0C57E7B51F833F1F39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02FFFA75B99D55BC4B5A9A4C418443CE;
+			remoteInfo = TABCommunicate;
+		};
+		A7780AF1376D91995EF41D4D78DBADEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02FFFA75B99D55BC4B5A9A4C418443CE;
+			remoteInfo = TABCommunicate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02693394B169E9924F06BFA1281E6D27 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0426547A75DEE6BE129A2BB0E0B696DA /* TABCommunicate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TABCommunicate-dummy.m"; sourceTree = "<group>"; };
+		0CCC1C11CDD85A3A620445CC4D251DB4 /* Pods-TABCommunicate_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TABCommunicate_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1CA680FEEE4AC94F1B24BCC05AC68E65 /* Pods-TABCommunicate_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TABCommunicate_Example.release.xcconfig"; sourceTree = "<group>"; };
+		22621B7D6D8614D1E308548358786497 /* TABCommunicate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TABCommunicate.modulemap; sourceTree = "<group>"; };
+		260184E56862C1384F2EA3D683417D61 /* TABCommunicateServiceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TABCommunicateServiceManager.swift; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		43794BF3084E7791E17A5849D6F48D98 /* Pods-TABCommunicate_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TABCommunicate_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4B738657DF1CD3777B115E95DA9E8C02 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		558121C65CB7B31F2B6481C27F93270D /* TABCommunicate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TABCommunicate-prefix.pch"; sourceTree = "<group>"; };
+		582C9459CBC0B8B1214098E7A39ABA2A /* Pods-TABCommunicate_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TABCommunicate_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		6C0D0F11597B25405C75B83329F94C6D /* TABCommunicate.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TABCommunicate.xcconfig; sourceTree = "<group>"; };
+		78E48A1D6021F7080CBC1A76B23537DA /* TABCommunicate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TABCommunicate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TABCommunicate.swift; sourceTree = "<group>"; };
+		95EFAF39CDD235E504BEEC79F772F761 /* Pods-TABCommunicate_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TABCommunicate_Example-umbrella.h"; sourceTree = "<group>"; };
+		9A7D051590435F053274DF5DBE2FF93C /* Pods-TABCommunicate_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TABCommunicate_Example-dummy.m"; sourceTree = "<group>"; };
+		A0CBC9EB885ECCD956454630E6206A45 /* Pods-TABCommunicate_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TABCommunicate_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A290615B7C0E8893B63615502AA5B9E1 /* Pods-TABCommunicate_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TABCommunicate_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		AAEB36024B81BFF6AB7F6A84FF22417F /* Pods-TABCommunicate_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TABCommunicate_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B437BA694416D49F3DCCC017DE7F0237 /* Pods-TABCommunicate_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TABCommunicate_Example.modulemap"; sourceTree = "<group>"; };
+		B4F5F16D45261C2D2B92D22BC2055D84 /* Pods-TABCommunicate_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TABCommunicate_Example-frameworks.sh"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BD4411384EEFDD661BCA20BC22540AA8 /* Pods_TABCommunicate_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TABCommunicate_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36A02381215E9C0A03AD02576B1B840 /* Pods-TABCommunicate_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TABCommunicate_Tests-umbrella.h"; sourceTree = "<group>"; };
+		CB52F32D8B59FC79B10C415070243C75 /* Pods-TABCommunicate_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TABCommunicate_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		CD7E4A40DCD17D0F5F68B5AB7B4A775F /* Pods-TABCommunicate_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TABCommunicate_Tests-dummy.m"; sourceTree = "<group>"; };
+		D061C272CADEE7BB1A4EFE52BF8A842C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D07DF2A69F911F0F0E72AB53757BE89A /* Pods-TABCommunicate_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TABCommunicate_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		D6CC23F42B7C95A1D36A6231742A02A7 /* TABCommunicatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TABCommunicatable.swift; sourceTree = "<group>"; };
+		DFD82AE38824D4B2089F5109A86617E7 /* Pods-TABCommunicate_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TABCommunicate_Tests-resources.sh"; sourceTree = "<group>"; };
+		E57B7801A82E355818210F1FD45FE43D /* Pods_TABCommunicate_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TABCommunicate_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED0D2B34F7274CD01B41AF9E14F68275 /* Pods-TABCommunicate_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TABCommunicate_Example-resources.sh"; sourceTree = "<group>"; };
+		F21A9840B656CB5A40C9F5D341BE911D /* Pods-TABCommunicate_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TABCommunicate_Tests.modulemap"; sourceTree = "<group>"; };
+		F25CA12E4D9CB7FAA654657FCD93BE7C /* TABCommunicate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TABCommunicate-umbrella.h"; sourceTree = "<group>"; };
+		FB5D843ECE922547D69219A4F9C4DBC0 /* TABCommunicate.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TABCommunicate.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A4242565B27D3C06B32B0FC2E5711C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BA2558F65C6FF26B909864A479C4ECE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4718AAB94AAF7B7BA72E22A2558B3618 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDA15F82FE8EBB216F6C984C87360F23 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3D721C485A8374D282465ACA486A415 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF10BFE9842B2A2A88B7CD095F7FF8B3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA0F8188980F64042C172EF65C9DA392 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12D6CB8FF860569482DECE9F46C1F820 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2284A92C2DD9FDD571B4470320B9530B /* Pods-TABCommunicate_Example */,
+				73AB4692BFD586CC6A9F4ABDEDA2B04D /* Pods-TABCommunicate_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		2284A92C2DD9FDD571B4470320B9530B /* Pods-TABCommunicate_Example */ = {
+			isa = PBXGroup;
+			children = (
+				02693394B169E9924F06BFA1281E6D27 /* Info.plist */,
+				B437BA694416D49F3DCCC017DE7F0237 /* Pods-TABCommunicate_Example.modulemap */,
+				0CCC1C11CDD85A3A620445CC4D251DB4 /* Pods-TABCommunicate_Example-acknowledgements.markdown */,
+				D07DF2A69F911F0F0E72AB53757BE89A /* Pods-TABCommunicate_Example-acknowledgements.plist */,
+				9A7D051590435F053274DF5DBE2FF93C /* Pods-TABCommunicate_Example-dummy.m */,
+				B4F5F16D45261C2D2B92D22BC2055D84 /* Pods-TABCommunicate_Example-frameworks.sh */,
+				ED0D2B34F7274CD01B41AF9E14F68275 /* Pods-TABCommunicate_Example-resources.sh */,
+				95EFAF39CDD235E504BEEC79F772F761 /* Pods-TABCommunicate_Example-umbrella.h */,
+				582C9459CBC0B8B1214098E7A39ABA2A /* Pods-TABCommunicate_Example.debug.xcconfig */,
+				1CA680FEEE4AC94F1B24BCC05AC68E65 /* Pods-TABCommunicate_Example.release.xcconfig */,
+			);
+			name = "Pods-TABCommunicate_Example";
+			path = "Target Support Files/Pods-TABCommunicate_Example";
+			sourceTree = "<group>";
+		};
+		2D6E40773ACA5DDE779D6CD8600E14C6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D6CC23F42B7C95A1D36A6231742A02A7 /* TABCommunicatable.swift */,
+				7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicate.swift */,
+				260184E56862C1384F2EA3D683417D61 /* TABCommunicateServiceManager.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		455464562A76B3349ECD76004F73021F /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				2D6E40773ACA5DDE779D6CD8600E14C6 /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		73AB4692BFD586CC6A9F4ABDEDA2B04D /* Pods-TABCommunicate_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4B738657DF1CD3777B115E95DA9E8C02 /* Info.plist */,
+				F21A9840B656CB5A40C9F5D341BE911D /* Pods-TABCommunicate_Tests.modulemap */,
+				43794BF3084E7791E17A5849D6F48D98 /* Pods-TABCommunicate_Tests-acknowledgements.markdown */,
+				CB52F32D8B59FC79B10C415070243C75 /* Pods-TABCommunicate_Tests-acknowledgements.plist */,
+				CD7E4A40DCD17D0F5F68B5AB7B4A775F /* Pods-TABCommunicate_Tests-dummy.m */,
+				A290615B7C0E8893B63615502AA5B9E1 /* Pods-TABCommunicate_Tests-frameworks.sh */,
+				DFD82AE38824D4B2089F5109A86617E7 /* Pods-TABCommunicate_Tests-resources.sh */,
+				C36A02381215E9C0A03AD02576B1B840 /* Pods-TABCommunicate_Tests-umbrella.h */,
+				A0CBC9EB885ECCD956454630E6206A45 /* Pods-TABCommunicate_Tests.debug.xcconfig */,
+				AAEB36024B81BFF6AB7F6A84FF22417F /* Pods-TABCommunicate_Tests.release.xcconfig */,
+			);
+			name = "Pods-TABCommunicate_Tests";
+			path = "Target Support Files/Pods-TABCommunicate_Tests";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				C13F0A5446A0DE4322C3690BC7981225 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				9F99B88562E93F5A1D117EC80BCDDE37 /* Products */,
+				12D6CB8FF860569482DECE9F46C1F820 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		802F5CC995F7E968679F6492D472A3CC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D061C272CADEE7BB1A4EFE52BF8A842C /* Info.plist */,
+				22621B7D6D8614D1E308548358786497 /* TABCommunicate.modulemap */,
+				6C0D0F11597B25405C75B83329F94C6D /* TABCommunicate.xcconfig */,
+				0426547A75DEE6BE129A2BB0E0B696DA /* TABCommunicate-dummy.m */,
+				558121C65CB7B31F2B6481C27F93270D /* TABCommunicate-prefix.pch */,
+				F25CA12E4D9CB7FAA654657FCD93BE7C /* TABCommunicate-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/TABCommunicate";
+			sourceTree = "<group>";
+		};
+		9F99B88562E93F5A1D117EC80BCDDE37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD4411384EEFDD661BCA20BC22540AA8 /* Pods_TABCommunicate_Example.framework */,
+				E57B7801A82E355818210F1FD45FE43D /* Pods_TABCommunicate_Tests.framework */,
+				FB5D843ECE922547D69219A4F9C4DBC0 /* TABCommunicate.bundle */,
+				78E48A1D6021F7080CBC1A76B23537DA /* TABCommunicate.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B8657BB15CCB2927559975C2E678D631 /* TABCommunicate */ = {
+			isa = PBXGroup;
+			children = (
+				455464562A76B3349ECD76004F73021F /* Pod */,
+				802F5CC995F7E968679F6492D472A3CC /* Support Files */,
+			);
+			name = TABCommunicate;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C13F0A5446A0DE4322C3690BC7981225 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B8657BB15CCB2927559975C2E678D631 /* TABCommunicate */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		105CB0FCB4DFCE8AE465EE136843E2E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA4A5965FD8F2E5B1431558C2188BF34 /* TABCommunicate-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41C6AFFEBA245AA503F703926E023CEB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C696ABCAE33EB7AEEB6BFBAA68D7990F /* Pods-TABCommunicate_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D18FF11B9DFC7570740853D3A2002D04 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4863A023428981CB33F994188289DC5D /* Pods-TABCommunicate_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		02FFFA75B99D55BC4B5A9A4C418443CE /* TABCommunicate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58478F7C190DEFF2A46D43CC54149F25 /* Build configuration list for PBXNativeTarget "TABCommunicate" */;
+			buildPhases = (
+				082FB0546203EF92E4109B8B80FC54EA /* Sources */,
+				4718AAB94AAF7B7BA72E22A2558B3618 /* Frameworks */,
+				318705CEE6B517DA6D0A0415D85E84A3 /* Resources */,
+				105CB0FCB4DFCE8AE465EE136843E2E4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0ACA440B6A480997CDE00D6F3732C7D0 /* PBXTargetDependency */,
+			);
+			name = TABCommunicate;
+			productName = TABCommunicate;
+			productReference = 78E48A1D6021F7080CBC1A76B23537DA /* TABCommunicate.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		10930BFC5618C80BAA84DD0A97798A59 /* Pods-TABCommunicate_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D8B15323B782949F311B9EA375E028F /* Build configuration list for PBXNativeTarget "Pods-TABCommunicate_Tests" */;
+			buildPhases = (
+				F02380BB36819FDAFD3645959AF25B74 /* Sources */,
+				E3D721C485A8374D282465ACA486A415 /* Frameworks */,
+				41C6AFFEBA245AA503F703926E023CEB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				165F93029CEADCFDF33E2BC2DF538366 /* PBXTargetDependency */,
+			);
+			name = "Pods-TABCommunicate_Tests";
+			productName = "Pods-TABCommunicate_Tests";
+			productReference = E57B7801A82E355818210F1FD45FE43D /* Pods_TABCommunicate_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3F3C8A64C3C5A26FC68ADCF2402765B7 /* TABCommunicate-TABCommunicate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2E7E92C310A15FE67885ADF1D9239E3 /* Build configuration list for PBXNativeTarget "TABCommunicate-TABCommunicate" */;
+			buildPhases = (
+				C9D5F2DFB3BF6502938290DA0988DDAE /* Sources */,
+				FA0F8188980F64042C172EF65C9DA392 /* Frameworks */,
+				2F495B9FAEFC2EA520FBEA3F7BF83445 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TABCommunicate-TABCommunicate";
+			productName = "TABCommunicate-TABCommunicate";
+			productReference = FB5D843ECE922547D69219A4F9C4DBC0 /* TABCommunicate.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		FB92F6BC19043581904748AC3DC91D9A /* Pods-TABCommunicate_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56FF7E85401C67A0169C73F75EDF8849 /* Build configuration list for PBXNativeTarget "Pods-TABCommunicate_Example" */;
+			buildPhases = (
+				B9E04587EDEC9B7F05C6DE68950E8BB2 /* Sources */,
+				2A4242565B27D3C06B32B0FC2E5711C6 /* Frameworks */,
+				D18FF11B9DFC7570740853D3A2002D04 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94CE1D4A58D78C64DA723C6359121359 /* PBXTargetDependency */,
+			);
+			name = "Pods-TABCommunicate_Example";
+			productName = "Pods-TABCommunicate_Example";
+			productReference = BD4411384EEFDD661BCA20BC22540AA8 /* Pods_TABCommunicate_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 9F99B88562E93F5A1D117EC80BCDDE37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB92F6BC19043581904748AC3DC91D9A /* Pods-TABCommunicate_Example */,
+				10930BFC5618C80BAA84DD0A97798A59 /* Pods-TABCommunicate_Tests */,
+				02FFFA75B99D55BC4B5A9A4C418443CE /* TABCommunicate */,
+				3F3C8A64C3C5A26FC68ADCF2402765B7 /* TABCommunicate-TABCommunicate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2F495B9FAEFC2EA520FBEA3F7BF83445 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		318705CEE6B517DA6D0A0415D85E84A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19951AFA89A34E8633C832D3CA4D3F7B /* TABCommunicate.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		082FB0546203EF92E4109B8B80FC54EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC9738850BF919F70F55D8385EDED463 /* TABCommunicatable.swift in Sources */,
+				968CE6EB4E04CBAD8E8EAFDDB86D47E3 /* TABCommunicate-dummy.m in Sources */,
+				0B095FE3FD72A9B135851C12470B899A /* TABCommunicate.swift in Sources */,
+				574050E942CE107A9D55E4102BFBF97E /* TABCommunicateServiceManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E04587EDEC9B7F05C6DE68950E8BB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18129C6559CD4987B19A37AC382C7071 /* Pods-TABCommunicate_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9D5F2DFB3BF6502938290DA0988DDAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F02380BB36819FDAFD3645959AF25B74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CF0EE2C1CD5EA41F40A33F465753B80 /* Pods-TABCommunicate_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0ACA440B6A480997CDE00D6F3732C7D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "TABCommunicate-TABCommunicate";
+			target = 3F3C8A64C3C5A26FC68ADCF2402765B7 /* TABCommunicate-TABCommunicate */;
+			targetProxy = 0876323487A7ED85636232333CAAF0F2 /* PBXContainerItemProxy */;
+		};
+		165F93029CEADCFDF33E2BC2DF538366 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TABCommunicate;
+			target = 02FFFA75B99D55BC4B5A9A4C418443CE /* TABCommunicate */;
+			targetProxy = 3AC88C09E5227F0C57E7B51F833F1F39 /* PBXContainerItemProxy */;
+		};
+		94CE1D4A58D78C64DA723C6359121359 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TABCommunicate;
+			target = 02FFFA75B99D55BC4B5A9A4C418443CE /* TABCommunicate */;
+			targetProxy = A7780AF1376D91995EF41D4D78DBADEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3C3C1FB05B928D08CAAB5230BF6F823D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C0D0F11597B25405C75B83329F94C6D /* TABCommunicate.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TABCommunicate/TABCommunicate-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TABCommunicate/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TABCommunicate/TABCommunicate.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TABCommunicate;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5CE5176205D06FF3FFE3DDDA9291E44B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		74857149DC1E0D599B8A01A78349A926 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8355760A399A60891FB7CB529F2EA777 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C0D0F11597B25405C75B83329F94C6D /* TABCommunicate.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TABCommunicate/TABCommunicate-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TABCommunicate/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TABCommunicate/TABCommunicate.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TABCommunicate;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8C9DAE72D12FA1C630597E937E12E671 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0CBC9EB885ECCD956454630E6206A45 /* Pods-TABCommunicate_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TABCommunicate_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TABCommunicate_Tests/Pods-TABCommunicate_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_TABCommunicate_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		92C6D501DBFC41980C964CBB64DB711F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C0D0F11597B25405C75B83329F94C6D /* TABCommunicate.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = TABCommunicate;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		CB966A446B6ED65813C9F9FB8B338605 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C0D0F11597B25405C75B83329F94C6D /* TABCommunicate.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = TABCommunicate;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		CFA05887F3D7875055C9981EF47492A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAEB36024B81BFF6AB7F6A84FF22417F /* Pods-TABCommunicate_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TABCommunicate_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TABCommunicate_Tests/Pods-TABCommunicate_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_TABCommunicate_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DA3347B5F5224C7A40DD62A5C0588948 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 582C9459CBC0B8B1214098E7A39ABA2A /* Pods-TABCommunicate_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TABCommunicate_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TABCommunicate_Example/Pods-TABCommunicate_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_TABCommunicate_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F5D3FA60171159F354CF2739245D2B5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CA680FEEE4AC94F1B24BCC05AC68E65 /* Pods-TABCommunicate_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TABCommunicate_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TABCommunicate_Example/Pods-TABCommunicate_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_TABCommunicate_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CE5176205D06FF3FFE3DDDA9291E44B /* Debug */,
+				74857149DC1E0D599B8A01A78349A926 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56FF7E85401C67A0169C73F75EDF8849 /* Build configuration list for PBXNativeTarget "Pods-TABCommunicate_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA3347B5F5224C7A40DD62A5C0588948 /* Debug */,
+				F5D3FA60171159F354CF2739245D2B5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58478F7C190DEFF2A46D43CC54149F25 /* Build configuration list for PBXNativeTarget "TABCommunicate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8355760A399A60891FB7CB529F2EA777 /* Debug */,
+				3C3C1FB05B928D08CAAB5230BF6F823D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D8B15323B782949F311B9EA375E028F /* Build configuration list for PBXNativeTarget "Pods-TABCommunicate_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C9DAE72D12FA1C630597E937E12E671 /* Debug */,
+				CFA05887F3D7875055C9981EF47492A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2E7E92C310A15FE67885ADF1D9239E3 /* Build configuration list for PBXNativeTarget "TABCommunicate-TABCommunicate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB966A446B6ED65813C9F9FB8B338605 /* Debug */,
+				92C6D501DBFC41980C964CBB64DB711F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

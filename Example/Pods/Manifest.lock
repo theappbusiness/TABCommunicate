@@ -1,0 +1,14 @@
+PODS:
+  - TABCommunicate (0.1.0)
+
+DEPENDENCIES:
+  - TABCommunicate (from `../`)
+
+EXTERNAL SOURCES:
+  TABCommunicate:
+    :path: ../
+
+SPEC CHECKSUMS:
+  TABCommunicate: ce70ed800bde70cc12260f307a8f8e3b1307cc86
+
+COCOAPODS: 0.39.0

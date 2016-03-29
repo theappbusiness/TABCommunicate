@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "TABCommunicate"
   s.version          = "0.1.0"
-  s.summary          = "A short description of TABCommunicate."
+  s.summary          = "Uses mulitpeer connectivity to send an object back and forth."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,24 +17,19 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+                        Uses mulitpeer connectivity to send an object back and forth.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/TABCommunicate"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://bitbucket.org/theappbusiness/tabcommunicate"
   s.license          = 'MIT'
-  s.author           = { "NEil" => "neil.horton@theappbusiness.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/TABCommunicate.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { "Neil" => "neil.horton@theappbusiness.com" }
+  s.source           = { :git => "git@bitbucket.org:theappbusiness/tabcommunicate.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '9.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
     'TABCommunicate' => ['Pod/Assets/*.png']
   }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
