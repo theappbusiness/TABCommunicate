@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "TABCommunicate"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "Uses mulitpeer connectivity to send an object back and forth."
 
 # This description is used to generate tags and improve search results.

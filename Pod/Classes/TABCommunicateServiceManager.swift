@@ -16,8 +16,6 @@ protocol TABCommunicateServiceManagerDelegate: class {
 
 class TABCommunicateServiceManager: NSObject {
   
-  // Service type must be a unique string, at most 15 characters long
-  // and can contain only ASCII lowercase letters, numbers and hyphens.
   private let myPeerId = MCPeerID(displayName: "NHCommunicate\(UIDevice.currentDevice().name)")
   private let serviceAdvertiser : MCNearbyServiceAdvertiser
   private let serviceBrowser : MCNearbyServiceBrowser
@@ -29,6 +27,7 @@ class TABCommunicateServiceManager: NSObject {
   }()
   
   weak var delegate: TABCommunicateServiceManagerDelegate?
+  
   init(serviceName: String) {
     self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: serviceName)
     self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: serviceName)
@@ -42,7 +41,6 @@ class TABCommunicateServiceManager: NSObject {
   func sendCommunicatableObject(object: TABCommunicatable) {
     do {
       let data = try object.dataRepresentation()
-      print(session.connectedPeers)
       try session.sendData(data, toPeers: session.connectedPeers, withMode: .Reliable)
     } catch let error{
       print(error)
