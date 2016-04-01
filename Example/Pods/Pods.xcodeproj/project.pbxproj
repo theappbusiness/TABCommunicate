@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B095FE3FD72A9B135851C12470B899A /* TABCommunicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicate.swift */; };
+		0B095FE3FD72A9B135851C12470B899A /* TABCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicator.swift */; };
 		18129C6559CD4987B19A37AC382C7071 /* Pods-TABCommunicate_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D051590435F053274DF5DBE2FF93C /* Pods-TABCommunicate_Example-dummy.m */; };
 		19951AFA89A34E8633C832D3CA4D3F7B /* TABCommunicate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB5D843ECE922547D69219A4F9C4DBC0 /* TABCommunicate.bundle */; };
 		37E6C9881CAE56E70086FC49 /* AnyTABCommunicateDelegateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6C9861CAE56960086FC49 /* AnyTABCommunicateDelegateType.swift */; };
@@ -62,7 +62,7 @@
 		582C9459CBC0B8B1214098E7A39ABA2A /* Pods-TABCommunicate_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TABCommunicate_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6C0D0F11597B25405C75B83329F94C6D /* TABCommunicate.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TABCommunicate.xcconfig; sourceTree = "<group>"; };
 		78E48A1D6021F7080CBC1A76B23537DA /* TABCommunicate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TABCommunicate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TABCommunicate.swift; sourceTree = "<group>"; };
+		7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TABCommunicator.swift; sourceTree = "<group>"; };
 		95EFAF39CDD235E504BEEC79F772F761 /* Pods-TABCommunicate_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TABCommunicate_Example-umbrella.h"; sourceTree = "<group>"; };
 		9A7D051590435F053274DF5DBE2FF93C /* Pods-TABCommunicate_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TABCommunicate_Example-dummy.m"; sourceTree = "<group>"; };
 		A0CBC9EB885ECCD956454630E6206A45 /* Pods-TABCommunicate_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TABCommunicate_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D6CC23F42B7C95A1D36A6231742A02A7 /* TABCommunicatable.swift */,
-				7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicate.swift */,
+				7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicator.swift */,
 				260184E56862C1384F2EA3D683417D61 /* TABCommunicateServiceManager.swift */,
 				37E6C9861CAE56960086FC49 /* AnyTABCommunicateDelegateType.swift */,
 			);
@@ -411,7 +411,7 @@
 			files = (
 				CC9738850BF919F70F55D8385EDED463 /* TABCommunicatable.swift in Sources */,
 				968CE6EB4E04CBAD8E8EAFDDB86D47E3 /* TABCommunicate-dummy.m in Sources */,
-				0B095FE3FD72A9B135851C12470B899A /* TABCommunicate.swift in Sources */,
+				0B095FE3FD72A9B135851C12470B899A /* TABCommunicator.swift in Sources */,
 				37E6C9881CAE56E70086FC49 /* AnyTABCommunicateDelegateType.swift in Sources */,
 				574050E942CE107A9D55E4102BFBF97E /* TABCommunicateServiceManager.swift in Sources */,
 			);

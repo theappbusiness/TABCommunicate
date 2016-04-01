@@ -11,18 +11,17 @@ import TABCommunicate
 
 class ViewController: UIViewController {
   
-  let communicate = TABCommunicator<Test>(serviceName: "TABCommunicate")
-  
+  var communicate: TABCommunicator<Test>?
   @IBOutlet weak var resultLabel: UILabel!
   @IBOutlet weak var textField: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    communicate.setDelegate(self)
+    communicate = TABCommunicator<Test>(serviceName: "TABCommunicate", delegate: self)
     view.backgroundColor = UIColor.redColor()
   }
   @IBAction func testTapped(sender: AnyObject) {
-    communicate.sendCommunicatableObject(Test(string: textField.text ?? ""))
+    communicate?.sendCommunicatableObject(Test(string: textField.text ?? ""))
     textField.resignFirstResponder()
     textField.text = ""
     resultLabel.text = ""

@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "TABCommunicate"
   s.version          = "0.1.2"
-  s.summary          = "Uses mulitpeer connectivity to send an object back and forth."
+  s.summary          = "Send and recieve objects of a certain Type between devices"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-                        Uses mulitpeer connectivity to send an object back and forth.
+                        Uses mulitpeer connectivity to send an object back and forth between iOS and Mac devices.
                        DESC
 
   s.homepage         = "https://bitbucket.org/theappbusiness/tabcommunicate"

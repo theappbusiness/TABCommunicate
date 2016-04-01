@@ -33,15 +33,34 @@ public protocol TABCommunicatorDelegate: class {
 public class TABCommunicator<T: TABCommunicatable> {
   private weak var delegate: AnyTABCommunicatorDelegateType<T>?
   private let communicateServiceManager: TABCommunicateServiceManager
+  private var objectRecievedFunction: ((T) -> Void)?
+
+  /**
+   
+   - parameter serviceName: Unique Identifier to broadcast and recieve on
+   think of it as the channel for this communication. **Must NOT be greater
+   than 15 characters.**
+   
+   - parameter delegate: Delegate object to recieve the following updates
+   for connection status updated and object recieved
+   */
+  public init<U: TABCommunicatorDelegate where U.Object == T>(serviceName: String, delegate: U) {
+    self.delegate = AnyTABCommunicatorDelegateType(delegate)
+    communicateServiceManager = TABCommunicateServiceManager(serviceName: serviceName)
+    communicateServiceManager.delegate = self
+  }
   
   /**
    
    - parameter serviceName: Unique Identifier to broadcast and recieve on
    think of it as the channel for this communication. **Must NOT be greater
    than 15 characters.**
-  
+   
+   - parameter objectRecieved: Block to be called when object is recieved, captured strongly.
+   
    */
-  public init(serviceName: String) {
+  public init(serviceName: String, objectRecieved: (T) -> Void) {
+    objectRecievedFunction = objectRecieved
     communicateServiceManager = TABCommunicateServiceManager(serviceName: serviceName)
     communicateServiceManager.delegate = self
   }
@@ -55,19 +74,13 @@ public class TABCommunicator<T: TABCommunicatable> {
   public func sendCommunicatableObject(object: TABCommunicatable) {
     communicateServiceManager.sendCommunicatableObject(object)
   }
-  /**
-   TAB communicate delegate will recieve the following updates
-   - Connection status updated
-   - Object recieved
-   */
-  public func setDelegate<U: TABCommunicatorDelegate where U.Object == T>(delegate: U) {
-    self.delegate = AnyTABCommunicatorDelegateType(delegate)
-  }
 }
 
 extension TABCommunicator: TABCommunicateServiceManagerDelegate {
   func communicatableDataRecieved(data: NSData) {
-    delegate?.communicatableObjectRecieved(T.create(data))
+    let object = T.create(data)
+    delegate?.communicatableObjectRecieved(object)
+    objectRecievedFunction?(object)
   }
   
   func newNumberOfPeers(number: Int) {
