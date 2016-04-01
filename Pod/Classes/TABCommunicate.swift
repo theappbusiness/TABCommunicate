@@ -9,7 +9,8 @@
 import Foundation
 
 ///Allows conformer to recieve objects from the multipeer session
-public protocol TABCommunicateDelegate: class {
+public protocol TABCommunicatorDelegate: class {
+  associatedtype Object: TABCommunicatable
   /**
    Object recieved through multipeer connectivity
    **Most likely not on the main thread**
@@ -17,7 +18,7 @@ public protocol TABCommunicateDelegate: class {
    - parameter object: TABCommunicatable object recieved
    
    */
-  func communicatableObjectRecieved(object: TABCommunicatable)
+  func communicatableObjectRecieved(object: Object)
   
   /**
    Peers have either left or joined the session informs current connection status
@@ -29,15 +30,17 @@ public protocol TABCommunicateDelegate: class {
 }
 
 ///Allows caller to connect to multipeer session and send objects
-public class TABCommunicate<T: TABCommunicatable> {
-  /**
-   TAB communicate delegate will recieve the following updates
-   - Connection status updated
-   - Object recieved
-   */
-  public weak var delegate: TABCommunicateDelegate?
+public class TABCommunicator<T: TABCommunicatable> {
+  private weak var delegate: AnyTABCommunicatorDelegateType<T>?
   private let communicateServiceManager: TABCommunicateServiceManager
   
+  /**
+   
+   - parameter serviceName: Unique Identifier to broadcast and recieve on
+   think of it as the channel for this communication. **Must NOT be greater
+   than 15 characters.**
+  
+   */
   public init(serviceName: String) {
     communicateServiceManager = TABCommunicateServiceManager(serviceName: serviceName)
     communicateServiceManager.delegate = self
@@ -52,9 +55,17 @@ public class TABCommunicate<T: TABCommunicatable> {
   public func sendCommunicatableObject(object: TABCommunicatable) {
     communicateServiceManager.sendCommunicatableObject(object)
   }
+  /**
+   TAB communicate delegate will recieve the following updates
+   - Connection status updated
+   - Object recieved
+   */
+  public func setDelegate<U: TABCommunicatorDelegate where U.Object == T>(delegate: U) {
+    self.delegate = AnyTABCommunicatorDelegateType(delegate)
+  }
 }
 
-extension TABCommunicate: TABCommunicateServiceManagerDelegate {
+extension TABCommunicator: TABCommunicateServiceManagerDelegate {
   func communicatableDataRecieved(data: NSData) {
     delegate?.communicatableObjectRecieved(T.create(data))
   }

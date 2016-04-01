@@ -11,14 +11,14 @@ import TABCommunicate
 
 class ViewController: UIViewController {
   
-  let communicate = TABCommunicate<Test>(serviceName: "TABCommunicate")
+  let communicate = TABCommunicator<Test>(serviceName: "TABCommunicate")
   
   @IBOutlet weak var resultLabel: UILabel!
   @IBOutlet weak var textField: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    communicate.delegate = self
+    communicate.setDelegate(self)
     view.backgroundColor = UIColor.redColor()
   }
   @IBAction func testTapped(sender: AnyObject) {
@@ -29,13 +29,10 @@ class ViewController: UIViewController {
   }
 }
 
-extension ViewController: TABCommunicateDelegate {
-  func communicatableObjectRecieved(object: TABCommunicatable) {
-    guard let test = object as? Test else {
-      fatalError("It didnt work")
-    }
+extension ViewController: TABCommunicatorDelegate {
+  func communicatableObjectRecieved(object: Test) {
     dispatch_async(dispatch_get_main_queue()) {
-      self.resultLabel.text = test.string
+      self.resultLabel.text = object.string
     }
   }
   
