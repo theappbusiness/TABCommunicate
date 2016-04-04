@@ -23,7 +23,7 @@ struct Test: TABCommunicatable {
     guard let dict = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String: String],
               testString = dict["string"]
     else {
-      fatalError("Not good data bro")
+      fatalError("Bad Data recieved")
     }
     
     return Test(string: testString)

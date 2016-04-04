@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "TABCommunicate"
-  s.version          = "0.1.3"
+  s.version          = "0.1.4"
   s.summary          = "Send and recieve objects of a certain Type between devices"
 
 # This description is used to generate tags and improve search results.

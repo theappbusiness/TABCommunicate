@@ -16,21 +16,25 @@ protocol TABCommunicateServiceManagerDelegate: class {
 
 class TABCommunicateServiceManager: NSObject {
   
-  private let myPeerId = MCPeerID(displayName: "NHCommunicate\(UIDevice.currentDevice().name)")
+  private let myPeerId: MCPeerID
   private let serviceAdvertiser : MCNearbyServiceAdvertiser
   private let serviceBrowser : MCNearbyServiceBrowser
+  private let configuration: TABCommunicateConfiguration
+  private var retryCount: Int = 0
   
   private lazy var session : MCSession = {
-    let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.Required)
+    let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .Required)
     session.delegate = self
     return session
   }()
   
   weak var delegate: TABCommunicateServiceManagerDelegate?
   
-  init(serviceName: String) {
-    self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: serviceName)
-    self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: serviceName)
+  init(configuration: TABCommunicateConfiguration) {
+    self.myPeerId = MCPeerID(displayName: "\(configuration.serviceName)\(UIDevice.currentDevice().name)")
+    self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: configuration.serviceName)
+    self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: configuration.serviceName)
+    self.configuration = configuration
     super.init()
     self.serviceAdvertiser.delegate = self
     self.serviceAdvertiser.startAdvertisingPeer()
@@ -38,12 +42,22 @@ class TABCommunicateServiceManager: NSObject {
     self.serviceBrowser.startBrowsingForPeers()
   }
   
-  func sendCommunicatableObject(object: TABCommunicatable) {
+  func sendCommunicatableObject(object: TABCommunicatable) throws {
     do {
       let data = try object.dataRepresentation()
       try session.sendData(data, toPeers: session.connectedPeers, withMode: .Reliable)
-    } catch let error{
-      print(error)
+      retryCount = 0
+    } catch let error {
+      if retryCount < configuration.numberOfRetryAttempts {
+        retryCount += 1
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(configuration.retryDelay * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+          do {
+            try self.sendCommunicatableObject(object)
+          } catch {}
+        }
+      }
+      throw error
     }
   }
   
@@ -61,15 +75,16 @@ extension TABCommunicateServiceManager: MCNearbyServiceAdvertiserDelegate {
   }
   
   func advertiser(advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: NSData?, invitationHandler: (Bool, MCSession) -> Void) {
-    guard peerID.displayName.containsString("NHCommunicate") else { return }
-    invitationHandler(true, self.session)
+    if let recievedContext = context where configuration.verifyContext(recievedContext) {
+      invitationHandler(true, self.session)
+    }
   }
 }
 
 extension TABCommunicateServiceManager: MCNearbyServiceBrowserDelegate {
   func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-    guard peerID.displayName.containsString("NHCommunicate") else { return }
-    browser.invitePeer(peerID, toSession: session, withContext: nil, timeout: 10)
+    guard peerID.displayName.containsString(configuration.serviceName) else { return }
+    browser.invitePeer(peerID, toSession: session, withContext: configuration.createServiceContext(), timeout: 10)
   }
   
   func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {

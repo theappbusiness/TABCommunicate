@@ -29,39 +29,44 @@ public protocol TABCommunicatorDelegate: class {
   func connectionDidUpdate(connected: Bool)
 }
 
-///Allows caller to connect to multipeer session and send objects
+/** 
+ Allows caller to connect to multipeer session and send objects of the
+ type T, where T conforms to TABCommunicatable.
+*/
 public class TABCommunicator<T: TABCommunicatable> {
   private weak var delegate: AnyTABCommunicatorDelegateType<T>?
   private let communicateServiceManager: TABCommunicateServiceManager
   private var objectRecievedFunction: ((T) -> Void)?
 
   /**
+   Initialise with a Configuration and a delegate. The delegate Object type
+   (input value to the communicatableObjectRecieved function) **Must** equal
+   the type being used to specialise the communicator instance other wise a
+   compiler error will be thrown.
    
-   - parameter serviceName: Unique Identifier to broadcast and recieve on
-   think of it as the channel for this communication. **Must NOT be greater
-   than 15 characters.**
+   - parameter configuration: TABCommunicateConfiguration containing details 
+   on how the communication should be configured.
    
    - parameter delegate: Delegate object to recieve the following updates
    for connection status updated and object recieved
    */
-  public init<U: TABCommunicatorDelegate where U.Object == T>(serviceName: String, delegate: U) {
+  public init<U: TABCommunicatorDelegate where U.Object == T>(configuration: TABCommunicateConfiguration, delegate: U) {
     self.delegate = AnyTABCommunicatorDelegateType(delegate)
-    communicateServiceManager = TABCommunicateServiceManager(serviceName: serviceName)
+    communicateServiceManager = TABCommunicateServiceManager(configuration: configuration)
     communicateServiceManager.delegate = self
   }
   
   /**
    
-   - parameter serviceName: Unique Identifier to broadcast and recieve on
-   think of it as the channel for this communication. **Must NOT be greater
-   than 15 characters.**
+   - parameter configuration: TABCommunicateConfiguration containing details on how the
+   communication should be configured.
    
-   - parameter objectRecieved: Block to be called when object is recieved, captured strongly.
+   - parameter objectRecieved: Block to be called when object is recieved, **captured strongly**.
    
    */
-  public init(serviceName: String, objectRecieved: (T) -> Void) {
+  public init(configuration: TABCommunicateConfiguration, objectRecieved: (T) -> Void) {
     objectRecievedFunction = objectRecieved
-    communicateServiceManager = TABCommunicateServiceManager(serviceName: serviceName)
+    communicateServiceManager = TABCommunicateServiceManager(configuration: configuration)
     communicateServiceManager.delegate = self
   }
   
@@ -71,19 +76,23 @@ public class TABCommunicator<T: TABCommunicatable> {
    - parameter object: TABCommunicatable object to send
    
    */
-  public func sendCommunicatableObject(object: TABCommunicatable) {
-    communicateServiceManager.sendCommunicatableObject(object)
+  public func sendCommunicatableObject(object: T) throws {
+    try communicateServiceManager.sendCommunicatableObject(object)
   }
 }
 
 extension TABCommunicator: TABCommunicateServiceManagerDelegate {
   func communicatableDataRecieved(data: NSData) {
-    let object = T.create(data)
-    delegate?.communicatableObjectRecieved(object)
-    objectRecievedFunction?(object)
+    dispatch_async(dispatch_get_main_queue()) {
+      let object = T.create(data)
+      self.delegate?.communicatableObjectRecieved(object)
+      self.objectRecievedFunction?(object)
+    }
   }
   
   func newNumberOfPeers(number: Int) {
-    delegate?.connectionDidUpdate(number > 0)
+    dispatch_async(dispatch_get_main_queue()) {
+      self.delegate?.connectionDidUpdate(number > 0)
+    }
   }
 }

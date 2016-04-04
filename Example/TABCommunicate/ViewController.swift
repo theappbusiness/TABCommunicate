@@ -12,16 +12,22 @@ import TABCommunicate
 class ViewController: UIViewController {
   
   var communicate: TABCommunicator<Test>?
+  let communicateConfiguration = TABCommunicateConfiguration(serviceName: "test", numberOfRetryAttempts: 3, retryDelay: 1, password: "password")
   @IBOutlet weak var resultLabel: UILabel!
   @IBOutlet weak var textField: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    communicate = TABCommunicator<Test>(serviceName: "TABCommunicate", delegate: self)
+    communicate = TABCommunicator<Test>(configuration: communicateConfiguration, delegate: self)
     view.backgroundColor = UIColor.redColor()
   }
   @IBAction func testTapped(sender: AnyObject) {
-    communicate?.sendCommunicatableObject(Test(string: textField.text ?? ""))
+    do {
+      try communicate?.sendCommunicatableObject(Test(string: textField.text ?? ""))
+    } catch {
+      print(error)
+    }
+    
     textField.resignFirstResponder()
     textField.text = ""
     resultLabel.text = ""
@@ -30,14 +36,10 @@ class ViewController: UIViewController {
 
 extension ViewController: TABCommunicatorDelegate {
   func communicatableObjectRecieved(object: Test) {
-    dispatch_async(dispatch_get_main_queue()) {
-      self.resultLabel.text = object.string
-    }
+    self.resultLabel.text = object.string
   }
   
   func connectionDidUpdate(connected: Bool) {
-    dispatch_async(dispatch_get_main_queue()) {
-      self.view.backgroundColor = connected ? UIColor.greenColor() : UIColor.redColor()
-    }
+    self.view.backgroundColor = connected ? UIColor.greenColor() : UIColor.redColor()
   }
 }
