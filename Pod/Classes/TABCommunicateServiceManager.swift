@@ -111,6 +111,8 @@ extension TABCommunicateServiceManager: MCSessionDelegate {
   func session(session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, withProgress progress: NSProgress) {}
   
   func session(session: MCSession, peer peerID: MCPeerID, didChangeState state: MCSessionState) {
+    print(peerID)
+    print(state.rawValue)
     delegate?.newNumberOfPeers(session.connectedPeers.count)
   }
 }

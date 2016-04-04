@@ -65,7 +65,7 @@ public struct TABCommunicateConfiguration {
     guard let
       contextDict = try? DataHelper.toDictFromData(context),
       contextServiceName = contextDict["serviceName"] as? String,
-      contextPassword = contextDict["serviceName"] as? String
+      contextPassword = contextDict["password"] as? String
       else { return false }
     return contextServiceName == serviceName && contextPassword == password
   }

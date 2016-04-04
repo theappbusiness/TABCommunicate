@@ -34,7 +34,7 @@ public protocol TABCommunicatorDelegate: class {
  type T, where T conforms to TABCommunicatable.
 */
 public class TABCommunicator<T: TABCommunicatable> {
-  private weak var delegate: AnyTABCommunicatorDelegateType<T>?
+  private var delegate: AnyTABCommunicatorDelegateType<T>?
   private let communicateServiceManager: TABCommunicateServiceManager
   private var objectRecievedFunction: ((T) -> Void)?
 
