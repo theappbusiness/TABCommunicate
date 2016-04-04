@@ -10,16 +10,16 @@ import Foundation
 
 class AnyTABCommunicatorDelegateType<T: TABCommunicable>: TABCommunicatorDelegate {
   
-  private let _CommunicableObjectRecieved: (T) -> Void
+  private let _communicableObjectRecieved: (T) -> Void
   private let _connectionDidUpdate: (Bool) -> Void
   
   init<U: TABCommunicatorDelegate where U.Object == T>(_ delegate: U) {
-    _CommunicableObjectRecieved = delegate.CommunicableObjectRecieved
+    _communicableObjectRecieved = delegate.communicableObjectRecieved
     _connectionDidUpdate = delegate.connectionDidUpdate
   }
   
-  func CommunicableObjectRecieved(object: T) {
-    _CommunicableObjectRecieved(object)
+  func communicableObjectRecieved(object: T) {
+    _communicableObjectRecieved(object)
   }
   
   func connectionDidUpdate(connected: Bool) {

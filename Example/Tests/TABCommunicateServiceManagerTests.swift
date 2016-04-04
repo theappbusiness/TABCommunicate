@@ -16,6 +16,7 @@ class TABCommunicateServiceManagerTests: XCTestCase {
   var sut: TABCommunicateServiceManager!
   var mockDelegate: MockTABCommunicateServiceManagerDelegate!
   var mockSession: MockMultipeerSession!
+  let peer = MCPeerID(displayName: "test")
   
   let testConfiguration = TABCommunicateConfiguration(serviceName: "test", numberOfRetryAttempts: 3, retryDelay: 0.1, password: "testPassword")
 
@@ -92,9 +93,8 @@ class TABCommunicateServiceManagerTests: XCTestCase {
   func test_advetiserDidRecieveInvitation_withValidContextCallsTrueInCompletion() {
     let validContext = testConfiguration.createServiceContext()
     let expectation = expectationWithDescription("Result block called")
-    let peerID = MCPeerID(displayName: "test")
-    let advetiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: .None, serviceType: "test")
-    sut.advertiser(advetiser, didReceiveInvitationFromPeer: peerID, withContext: validContext) { acceptance, session
+    let advetiser = MCNearbyServiceAdvertiser(peer: peer, discoveryInfo: .None, serviceType: "test")
+    sut.advertiser(advetiser, didReceiveInvitationFromPeer: peer, withContext: validContext) { acceptance, session
       in
       expectation.fulfill()
       XCTAssert(acceptance)
@@ -105,61 +105,30 @@ class TABCommunicateServiceManagerTests: XCTestCase {
   }
   
   func test_browserLostPeer_informsDelegate() {
-    let peer = MCPeerID(displayName: "test")
     let browser = MCNearbyServiceBrowser(peer: peer, serviceType: "test")
     sut.browser(browser, lostPeer: peer)
     XCTAssert(mockDelegate.capturedNumberOfPeers! == 0)
   }
-}
-
-class MockTABCommunicateServiceManagerDelegate: TABCommunicateServiceManagerDelegate {
   
-  var capturedData: NSData?
-  var capturedNumberOfPeers: Int?
-  
-  func communicableDataRecieved(data: NSData) {
-    capturedData = data
-  }
-  
-  func newNumberOfPeers(number: Int) {
-    capturedNumberOfPeers = number
-  }
-}
-
-class MockMultipeerSession : MCSession {
-  
-  var errorToThrow: ErrorType?
-  var capturedData: NSData?
-  var callCount = 0
-  
-  init() {
-    super.init(peer: MCPeerID(displayName: "Test") , securityIdentity: nil, encryptionPreference: .Required)
-  }
-  
-  override func sendData(data: NSData, toPeers peerIDs: [MCPeerID], withMode mode: MCSessionSendDataMode) throws {
-    callCount += 1
-    if let error = errorToThrow {
-      throw error
+  func test_sessionDidRecieveCertificate_callsTrueInCompletion() {
+    let expectation = expectationWithDescription("Result block called")
+    sut.session(mockSession, didReceiveCertificate: .None, fromPeer: peer) { result in
+      expectation.fulfill()
+      XCTAssert(result)
     }
-    capturedData = data
-  }
-}
-
-final class MockTABCommunicable : TABCommunicable {
-  
-  var caprturedCreationDict: [String: AnyObject]?
-  var errorToThrow: ErrorType?
-  
-  func dataRepresentation() throws -> NSData {
-    if let error = errorToThrow {
-      throw error
+    waitForExpectationsWithTimeout(2.0) { error in
+      if error != nil { XCTFail() }
+      XCTAssertNotNil(self.mockDelegate.capturedNumberOfPeers)
     }
-    return DataHelper.toDataFromDict(["test": "test"])
   }
   
-  static func create(data: NSData) -> MockTABCommunicable {
-    let mock = MockTABCommunicable()
-    mock.caprturedCreationDict = try! DataHelper.toDictFromData(data)
-    return mock
+  func test_sessionDidRecieveData_callsDelegate() {
+    sut.session(mockSession, didReceiveData: NSData(), fromPeer: peer)
+    XCTAssertNotNil(mockDelegate.capturedData)
+  }
+  
+  func test_sessionDidChangeState_informsDelegate() {
+    sut.session(mockSession, peer: peer, didChangeState: .Connected)
+    XCTAssertNotNil(mockDelegate.capturedNumberOfPeers)
   }
 }

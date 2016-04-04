@@ -18,7 +18,7 @@ public protocol TABCommunicatorDelegate: class {
    - parameter object: TABCommunicable object recieved
    
    */
-  func CommunicableObjectRecieved(object: Object)
+  func communicableObjectRecieved(object: Object)
   
   /**
    Peers have either left or joined the session informs current connection status
@@ -35,7 +35,7 @@ public protocol TABCommunicatorDelegate: class {
 */
 public class TABCommunicator<T: TABCommunicable> {
   private var delegate: AnyTABCommunicatorDelegateType<T>?
-  private var communicateServiceManager: TABCommunicateServiceManager?
+  var communicateServiceManager: TABCommunicateServiceManager?
   private var objectRecievedFunction: ((T) -> Void)?
   private let config: TABCommunicateConfiguration
 
@@ -94,7 +94,7 @@ extension TABCommunicator: TABCommunicateServiceManagerDelegate {
   func communicableDataRecieved(data: NSData) {
     dispatch_async(dispatch_get_main_queue()) {
       let object = T.create(data)
-      self.delegate?.CommunicableObjectRecieved(object)
+      self.delegate?.communicableObjectRecieved(object)
       self.objectRecievedFunction?(object)
     }
   }

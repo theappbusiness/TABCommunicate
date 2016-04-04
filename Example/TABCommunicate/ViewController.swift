@@ -42,7 +42,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: TABCommunicatorDelegate {
-  func CommunicableObjectRecieved(test: Test) {
+  func communicableObjectRecieved(test: Test) {
     self.resultLabel.text = test.string
   }
   

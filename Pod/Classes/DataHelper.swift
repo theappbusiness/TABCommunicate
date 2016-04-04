@@ -9,6 +9,9 @@
 import Foundation
 
 struct DataHelper {
+  
+  private init() {}
+  
   static func toDataFromDict(dict: [String: AnyObject]) -> NSData {
     return NSKeyedArchiver.archivedDataWithRootObject(dict)
   }

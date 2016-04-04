@@ -94,9 +94,7 @@ extension TABCommunicateServiceManager: MCNearbyServiceBrowserDelegate {
 }
 
 extension TABCommunicateServiceManager: MCSessionDelegate {
-  func session(session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, atURL localURL: NSURL, withError error: NSError?) {
-    delegate?.newNumberOfPeers(session.connectedPeers.count)
-  }
+  func session(session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, atURL localURL: NSURL, withError error: NSError?) {}
   
   func session(session: MCSession, didReceiveCertificate certificate: [AnyObject]?, fromPeer peerID: MCPeerID, certificateHandler: (Bool) -> Void) {
     certificateHandler(true)
