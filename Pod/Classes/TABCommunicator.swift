@@ -76,8 +76,8 @@ public class TABCommunicator<T: TABCommunicatable> {
    - parameter object: TABCommunicatable object to send
    
    */
-  public func sendCommunicatableObject(object: T) throws {
-    try communicateServiceManager.sendCommunicatableObject(object)
+  public func sendCommunicatableObject(object: T, completion: (TABCommunicateResult) -> Void) {
+    communicateServiceManager.sendCommunicatableObject(object, completion: completion)
   }
 }
 

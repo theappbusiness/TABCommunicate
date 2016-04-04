@@ -42,22 +42,22 @@ class TABCommunicateServiceManager: NSObject {
     self.serviceBrowser.startBrowsingForPeers()
   }
   
-  func sendCommunicatableObject(object: TABCommunicatable) throws {
+  func sendCommunicatableObject(object: TABCommunicatable, completion: (TABCommunicateResult) -> Void) {
     do {
       let data = try object.dataRepresentation()
       try session.sendData(data, toPeers: session.connectedPeers, withMode: .Reliable)
       retryCount = 0
+      completion(.Success)
     } catch let error {
       if retryCount < configuration.numberOfRetryAttempts {
         retryCount += 1
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(configuration.retryDelay * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
-          do {
-            try self.sendCommunicatableObject(object)
-          } catch {}
+          self.sendCommunicatableObject(object, completion: completion)
         }
+        return
       }
-      throw error
+      completion(.Failure(error as NSError))
     }
   }
   
@@ -111,8 +111,6 @@ extension TABCommunicateServiceManager: MCSessionDelegate {
   func session(session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, withProgress progress: NSProgress) {}
   
   func session(session: MCSession, peer peerID: MCPeerID, didChangeState state: MCSessionState) {
-    print(peerID)
-    print(state.rawValue)
     delegate?.newNumberOfPeers(session.connectedPeers.count)
   }
 }

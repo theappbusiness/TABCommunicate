@@ -10,6 +10,7 @@
 		0B095FE3FD72A9B135851C12470B899A /* TABCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicator.swift */; };
 		18129C6559CD4987B19A37AC382C7071 /* Pods-TABCommunicate_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D051590435F053274DF5DBE2FF93C /* Pods-TABCommunicate_Example-dummy.m */; };
 		19951AFA89A34E8633C832D3CA4D3F7B /* TABCommunicate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB5D843ECE922547D69219A4F9C4DBC0 /* TABCommunicate.bundle */; };
+		371E461A1CB2A8C300C248EF /* TABCommunicateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E46191CB2A8C300C248EF /* TABCommunicateResult.swift */; };
 		3754BFA91CB2739F00CDE7DB /* TABCommunicateConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3754BFA81CB2739F00CDE7DB /* TABCommunicateConfiguration.swift */; };
 		3754BFAB1CB27FDD00CDE7DB /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3754BFAA1CB27FDD00CDE7DB /* DataHelper.swift */; };
 		37E6C9881CAE56E70086FC49 /* AnyTABCommunicateDelegateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6C9861CAE56960086FC49 /* AnyTABCommunicateDelegateType.swift */; };
@@ -56,6 +57,7 @@
 		1CA680FEEE4AC94F1B24BCC05AC68E65 /* Pods-TABCommunicate_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TABCommunicate_Example.release.xcconfig"; sourceTree = "<group>"; };
 		22621B7D6D8614D1E308548358786497 /* TABCommunicate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TABCommunicate.modulemap; sourceTree = "<group>"; };
 		260184E56862C1384F2EA3D683417D61 /* TABCommunicateServiceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TABCommunicateServiceManager.swift; sourceTree = "<group>"; };
+		371E46191CB2A8C300C248EF /* TABCommunicateResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TABCommunicateResult.swift; sourceTree = "<group>"; };
 		3754BFA81CB2739F00CDE7DB /* TABCommunicateConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TABCommunicateConfiguration.swift; sourceTree = "<group>"; };
 		3754BFAA1CB27FDD00CDE7DB /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		37E6C9861CAE56960086FC49 /* AnyTABCommunicateDelegateType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTABCommunicateDelegateType.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				260184E56862C1384F2EA3D683417D61 /* TABCommunicateServiceManager.swift */,
 				37E6C9861CAE56960086FC49 /* AnyTABCommunicateDelegateType.swift */,
 				3754BFA81CB2739F00CDE7DB /* TABCommunicateConfiguration.swift */,
+				371E46191CB2A8C300C248EF /* TABCommunicateResult.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371E461A1CB2A8C300C248EF /* TABCommunicateResult.swift in Sources */,
 				3754BFA91CB2739F00CDE7DB /* TABCommunicateConfiguration.swift in Sources */,
 				CC9738850BF919F70F55D8385EDED463 /* TABCommunicatable.swift in Sources */,
 				968CE6EB4E04CBAD8E8EAFDDB86D47E3 /* TABCommunicate-dummy.m in Sources */,

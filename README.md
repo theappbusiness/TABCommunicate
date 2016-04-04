@@ -37,7 +37,14 @@ let communicator = TABCommunicator<SomeTABCommunicatable>(configuration) { someC
 Send an object to connected peers with the following
 
 ```swift
-communicate.sendCommunicatableObject(myObject)
+communicate.sendCommunicatableObject(myObject) { result in
+  switch result {
+  case .Success:
+    //Do something
+  case .Failure(let error):
+    //Handle error
+  }
+}
 ```
 
 ###TABCommunicatable

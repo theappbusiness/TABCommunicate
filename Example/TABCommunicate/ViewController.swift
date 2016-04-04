@@ -22,15 +22,25 @@ class ViewController: UIViewController {
     view.backgroundColor = UIColor.redColor()
   }
   @IBAction func testTapped(sender: AnyObject) {
-    do {
-      try communicator?.sendCommunicatableObject(Test(string: textField.text ?? ""))
-    } catch {
-      print(error)
-    }
     
-    textField.resignFirstResponder()
-    textField.text = ""
-    resultLabel.text = ""
+    communicator?.sendCommunicatableObject(Test(string: textField.text ?? "")) { [weak self] result in
+      switch result {
+      case .Success:
+        self?.textField.resignFirstResponder()
+        self?.textField.text = ""
+        self?.resultLabel.text = ""
+      case .Failure(let error as NSError):
+        self?.showAlert("Could not send message", message: error.localizedDescription)
+      case .Failure(let error):
+        fatalError("Unknown error \(error)")
+      }
+    }
+  }
+  
+  func showAlert(title: String, message: String) {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: .None))
+    presentViewController(alertController, animated: true, completion: .None)
   }
 }
 
