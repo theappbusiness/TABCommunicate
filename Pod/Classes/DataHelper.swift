@@ -18,8 +18,12 @@ struct DataHelper {
   
   static func toDictFromData(data: NSData) throws -> [String: AnyObject] {
     guard let dict = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String: AnyObject] else {
-      throw NSError(domain: "", code: 597, userInfo: .None)
+      throw TABCommunicateError.CouldNotDecodeObject
     }
     return dict
   }
+}
+
+enum TABCommunicateError: ErrorType {
+  case CouldNotDecodeObject
 }

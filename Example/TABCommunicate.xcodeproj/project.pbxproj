@@ -15,6 +15,8 @@
 		371E462A1CB2E3EC00C248EF /* TABCommunicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E46291CB2E3EC00C248EF /* TABCommunicatorTests.swift */; };
 		371E462C1CB2E47600C248EF /* MockTABCommunicatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E462B1CB2E47600C248EF /* MockTABCommunicatorDelegate.swift */; };
 		371E46301CB2EB1B00C248EF /* DataHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E462F1CB2EB1B00C248EF /* DataHelperTests.swift */; };
+		371E46321CB2F42C00C248EF /* MockTABCommunicateServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E46311CB2F42C00C248EF /* MockTABCommunicateServiceManager.swift */; };
+		371E46361CB307AF00C248EF /* TABCommunicateConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E46351CB307AF00C248EF /* TABCommunicateConfigurationTests.swift */; };
 		37FE3E471CAABF60003ADB29 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FE3E461CAABF60003ADB29 /* Test.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -44,6 +46,8 @@
 		371E46291CB2E3EC00C248EF /* TABCommunicatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TABCommunicatorTests.swift; sourceTree = "<group>"; };
 		371E462B1CB2E47600C248EF /* MockTABCommunicatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTABCommunicatorDelegate.swift; sourceTree = "<group>"; };
 		371E462F1CB2EB1B00C248EF /* DataHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelperTests.swift; sourceTree = "<group>"; };
+		371E46311CB2F42C00C248EF /* MockTABCommunicateServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockTABCommunicateServiceManager.swift; path = Mocks/MockTABCommunicateServiceManager.swift; sourceTree = "<group>"; };
+		371E46351CB307AF00C248EF /* TABCommunicateConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TABCommunicateConfigurationTests.swift; sourceTree = "<group>"; };
 		37FE3E461CAABF60003ADB29 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		4C7ADC0DCB9D18B3DC2D4EDC /* Pods_TABCommunicate_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TABCommunicate_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E930FD1C3045DD318DC16BF /* TABCommunicate.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TABCommunicate.podspec; path = ../TABCommunicate.podspec; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 				371E46251CB2E2EB00C248EF /* MockMultipeerSession.swift */,
 				371E46271CB2E31100C248EF /* MockTABCommunicable.swift */,
 				371E462B1CB2E47600C248EF /* MockTABCommunicatorDelegate.swift */,
+				371E46311CB2F42C00C248EF /* MockTABCommunicateServiceManager.swift */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 				371E462F1CB2EB1B00C248EF /* DataHelperTests.swift */,
 				371E46291CB2E3EC00C248EF /* TABCommunicatorTests.swift */,
 				371E461F1CB2C4B700C248EF /* TABCommunicateServiceManagerTests.swift */,
+				371E46351CB307AF00C248EF /* TABCommunicateConfigurationTests.swift */,
 				371E46221CB2E2B000C248EF /* Mocks */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				371E461E1CB2C4B700C248EF /* TABCommunicate_Tests-Bridging-Header.h */,
@@ -402,8 +408,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				371E46301CB2EB1B00C248EF /* DataHelperTests.swift in Sources */,
+				371E46361CB307AF00C248EF /* TABCommunicateConfigurationTests.swift in Sources */,
 				371E46281CB2E31100C248EF /* MockTABCommunicable.swift in Sources */,
 				371E46261CB2E2EB00C248EF /* MockMultipeerSession.swift in Sources */,
+				371E46321CB2F42C00C248EF /* MockTABCommunicateServiceManager.swift in Sources */,
 				371E46241CB2E2C500C248EF /* MockTABCommunicateServiceManagerDelegate.swift in Sources */,
 				371E462C1CB2E47600C248EF /* MockTABCommunicatorDelegate.swift in Sources */,
 				371E462A1CB2E3EC00C248EF /* TABCommunicatorTests.swift in Sources */,

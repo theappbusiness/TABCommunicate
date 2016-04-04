@@ -19,4 +19,14 @@ class DataHelperTests: XCTestCase {
     XCTAssert(decodedDict["one"] as! String == dict["one"])
     XCTAssert(decodedDict["two"] as! Int == dict["two"])
   }
+  
+  func test_toDictFromData_whenUnableToDecodeObject_throwsError() {
+    do {
+      _ = try DataHelper.toDictFromData(NSData())
+    } catch TABCommunicateError.CouldNotDecodeObject {
+      return
+    } catch {
+      XCTFail()
+    }
+  }
 }

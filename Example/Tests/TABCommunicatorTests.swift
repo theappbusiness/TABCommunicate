@@ -71,4 +71,11 @@ class TABCommunicatorTests: XCTestCase {
       if error != nil { XCTFail() }
     }
   }
+  
+  func test_sendCommunicableObject_callsServiceAndSetsCompletion() {
+    let mockService = MockTABCommunicateServiceManager()
+    sut.communicateServiceManager = mockService
+    sut.sendCommunicableObject(MockTABCommunicable()) {result in}
+    XCTAssertNotNil(mockService.capturedCompletion)
+  }
 }
