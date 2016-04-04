@@ -10,20 +10,20 @@ import Foundation
 import MultipeerConnectivity
 
 protocol TABCommunicateServiceManagerDelegate: class {
-  func CommunicableDataRecieved(data: NSData)
+  func communicableDataRecieved(data: NSData)
   func newNumberOfPeers(number: Int)
 }
 
 class TABCommunicateServiceManager: NSObject {
   
-  private let myPeerId: MCPeerID
+  let myPeerID: MCPeerID
   private let serviceAdvertiser : MCNearbyServiceAdvertiser
   private let serviceBrowser : MCNearbyServiceBrowser
   private let configuration: TABCommunicateConfiguration
   private var retryCount: Int = 0
   
-  private lazy var session : MCSession = {
-    let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .Required)
+  lazy var session : MCSession = {
+    let session = MCSession(peer: self.myPeerID, securityIdentity: nil, encryptionPreference: .Required)
     session.delegate = self
     return session
   }()
@@ -32,9 +32,9 @@ class TABCommunicateServiceManager: NSObject {
   
   init(configuration: TABCommunicateConfiguration, delegate: TABCommunicateServiceManagerDelegate?) {
     self.delegate = delegate
-    self.myPeerId = MCPeerID(displayName: "\(configuration.serviceName)\(UIDevice.currentDevice().name)")
-    self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: configuration.serviceName)
-    self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: configuration.serviceName)
+    self.myPeerID = MCPeerID(displayName: "\(configuration.serviceName)\(UIDevice.currentDevice().name)")
+    self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerID, discoveryInfo: nil, serviceType: configuration.serviceName)
+    self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerID, serviceType: configuration.serviceName)
     self.configuration = configuration
     super.init()
     self.serviceAdvertiser.delegate = self
@@ -104,7 +104,7 @@ extension TABCommunicateServiceManager: MCSessionDelegate {
   }
   
   func session(session: MCSession, didReceiveData data: NSData, fromPeer peerID: MCPeerID) {
-    delegate?.CommunicableDataRecieved(data)
+    delegate?.communicableDataRecieved(data)
   }
   
   func session(session: MCSession, didReceiveStream stream: NSInputStream, withName streamName: String, fromPeer peerID: MCPeerID) {}
@@ -115,3 +115,4 @@ extension TABCommunicateServiceManager: MCSessionDelegate {
     delegate?.newNumberOfPeers(session.connectedPeers.count)
   }
 }
+

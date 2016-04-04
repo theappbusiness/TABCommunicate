@@ -91,7 +91,7 @@ public class TABCommunicator<T: TABCommunicable> {
 }
 
 extension TABCommunicator: TABCommunicateServiceManagerDelegate {
-  func CommunicableDataRecieved(data: NSData) {
+  func communicableDataRecieved(data: NSData) {
     dispatch_async(dispatch_get_main_queue()) {
       let object = T.create(data)
       self.delegate?.CommunicableObjectRecieved(object)
