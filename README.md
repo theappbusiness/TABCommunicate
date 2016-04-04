@@ -1,5 +1,9 @@
 ![The App Business](https://github.com/theappbusiness/TABCommunicate/blob/master/Banner.png)
 
+[![Version](https://img.shields.io/cocoapods/v/TABCommunicate.svg?style=flat)](http://cocoapods.org/pods/TABCommunicate)
+[![License](https://img.shields.io/cocoapods/l/TABCommunicate.svg?style=flat)](http://cocoapods.org/pods/TABCommunicate)
+[![Platform](https://img.shields.io/cocoapods/p/TABCommunicate.svg?style=flat)](http://cocoapods.org/pods/TABCommunicate)
+
 # TABCommunicate
 
 A lightweight, strongly typed Multipeer connectivity wrapper to allow sending an object between devices.
