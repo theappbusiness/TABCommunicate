@@ -2,7 +2,7 @@
 
 # TABCommunicate
 
-A lightweight Multipeer connectivity wrapper to allow sending an object between devices
+A lightweight, strongly typed Multipeer connectivity wrapper to allow sending an object between devices.
 
 ## Usage
 
@@ -37,7 +37,7 @@ let communicator = TABCommunicator<SomeTABCommunicatable>(configuration) { someC
 Send an object to connected peers with the following
 
 ```swift
-communicate.sendCommunicatableObject(myObject) { result in
+communicator.sendCommunicatableObject(myObject) { result in
   switch result {
   case .Success:
     //Do something
@@ -60,7 +60,7 @@ public protocol TABCommunicatable {
 
 ###TABCommunicatorDelegate
 
-The TABCommunicatorDelegate must be a class not a struct (as it is retained weakly). The delegate will recieve updates when an object is sent and when the connection did update.
+The TABCommunicatorDelegate will receive updates when an object is sent and when the connection did update.
 
 ```swift
 extension ViewController: TABCommunicateDelegate {

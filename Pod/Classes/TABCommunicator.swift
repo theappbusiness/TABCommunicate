@@ -35,8 +35,9 @@ public protocol TABCommunicatorDelegate: class {
 */
 public class TABCommunicator<T: TABCommunicatable> {
   private var delegate: AnyTABCommunicatorDelegateType<T>?
-  private let communicateServiceManager: TABCommunicateServiceManager
+  private var communicateServiceManager: TABCommunicateServiceManager?
   private var objectRecievedFunction: ((T) -> Void)?
+  private let config: TABCommunicateConfiguration
 
   /**
    Initialise with a Configuration and a delegate. The delegate Object type
@@ -52,8 +53,8 @@ public class TABCommunicator<T: TABCommunicatable> {
    */
   public init<U: TABCommunicatorDelegate where U.Object == T>(configuration: TABCommunicateConfiguration, delegate: U) {
     self.delegate = AnyTABCommunicatorDelegateType(delegate)
-    communicateServiceManager = TABCommunicateServiceManager(configuration: configuration)
-    communicateServiceManager.delegate = self
+    self.config = configuration
+    self.communicateServiceManager = TABCommunicateServiceManager(configuration: configuration, delegate: self)
   }
   
   /**
@@ -65,9 +66,9 @@ public class TABCommunicator<T: TABCommunicatable> {
    
    */
   public init(configuration: TABCommunicateConfiguration, objectRecieved: (T) -> Void) {
-    objectRecievedFunction = objectRecieved
-    communicateServiceManager = TABCommunicateServiceManager(configuration: configuration)
-    communicateServiceManager.delegate = self
+    self.objectRecievedFunction = objectRecieved
+    self.config = configuration
+    self.communicateServiceManager = TABCommunicateServiceManager(configuration: configuration, delegate: self)
   }
   
   /**
@@ -77,7 +78,15 @@ public class TABCommunicator<T: TABCommunicatable> {
    
    */
   public func sendCommunicatableObject(object: T, completion: (TABCommunicateResult) -> Void) {
-    communicateServiceManager.sendCommunicatableObject(object, completion: completion)
+    communicateServiceManager?.sendCommunicatableObject(object, completion: completion)
+  }
+  
+  /**
+   Kill old connection and create a new instance with the same parameters
+   */
+  public func resetConnection() {
+    communicateServiceManager = .None
+    communicateServiceManager = TABCommunicateServiceManager(configuration: config, delegate: self)
   }
 }
 

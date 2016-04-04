@@ -30,7 +30,8 @@ class TABCommunicateServiceManager: NSObject {
   
   weak var delegate: TABCommunicateServiceManagerDelegate?
   
-  init(configuration: TABCommunicateConfiguration) {
+  init(configuration: TABCommunicateConfiguration, delegate: TABCommunicateServiceManagerDelegate?) {
+    self.delegate = delegate
     self.myPeerId = MCPeerID(displayName: "\(configuration.serviceName)\(UIDevice.currentDevice().name)")
     self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: configuration.serviceName)
     self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: configuration.serviceName)
