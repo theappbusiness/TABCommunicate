@@ -22,17 +22,14 @@ class ViewController: UIViewController {
     view.backgroundColor = UIColor.redColor()
   }
   @IBAction func testTapped(sender: AnyObject) {
-    
-    communicator?.sendCommunicatableObject(Test(string: textField.text ?? "")) { [weak self] result in
+    communicator?.sendCommunicableObject(Test(string: textField.text ?? "")) { [weak self] result in
       switch result {
       case .Success:
         self?.textField.resignFirstResponder()
         self?.textField.text = ""
         self?.resultLabel.text = ""
-      case .Failure(let error as NSError):
-        self?.showAlert("Could not send message", message: error.localizedDescription)
       case .Failure(let error):
-        fatalError("Unknown error \(error)")
+        self?.showAlert("Could not send message", message: error.localizedDescription)
       }
     }
   }
@@ -45,7 +42,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: TABCommunicatorDelegate {
-  func communicatableObjectRecieved(test: Test) {
+  func CommunicableObjectRecieved(test: Test) {
     self.resultLabel.text = test.string
   }
   

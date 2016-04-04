@@ -11,6 +11,7 @@
 		18129C6559CD4987B19A37AC382C7071 /* Pods-TABCommunicate_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D051590435F053274DF5DBE2FF93C /* Pods-TABCommunicate_Example-dummy.m */; };
 		19951AFA89A34E8633C832D3CA4D3F7B /* TABCommunicate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB5D843ECE922547D69219A4F9C4DBC0 /* TABCommunicate.bundle */; };
 		371E461A1CB2A8C300C248EF /* TABCommunicateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E46191CB2A8C300C248EF /* TABCommunicateResult.swift */; };
+		371E461D1CB2AEBE00C248EF /* TABCommunicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E461B1CB2AEAB00C248EF /* TABCommunicable.swift */; };
 		3754BFA91CB2739F00CDE7DB /* TABCommunicateConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3754BFA81CB2739F00CDE7DB /* TABCommunicateConfiguration.swift */; };
 		3754BFAB1CB27FDD00CDE7DB /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3754BFAA1CB27FDD00CDE7DB /* DataHelper.swift */; };
 		37E6C9881CAE56E70086FC49 /* AnyTABCommunicateDelegateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6C9861CAE56960086FC49 /* AnyTABCommunicateDelegateType.swift */; };
@@ -22,7 +23,6 @@
 		AA4A5965FD8F2E5B1431558C2188BF34 /* TABCommunicate-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F25CA12E4D9CB7FAA654657FCD93BE7C /* TABCommunicate-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDA15F82FE8EBB216F6C984C87360F23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		C696ABCAE33EB7AEEB6BFBAA68D7990F /* Pods-TABCommunicate_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C36A02381215E9C0A03AD02576B1B840 /* Pods-TABCommunicate_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC9738850BF919F70F55D8385EDED463 /* TABCommunicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CC23F42B7C95A1D36A6231742A02A7 /* TABCommunicatable.swift */; };
 		CF10BFE9842B2A2A88B7CD095F7FF8B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +58,7 @@
 		22621B7D6D8614D1E308548358786497 /* TABCommunicate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TABCommunicate.modulemap; sourceTree = "<group>"; };
 		260184E56862C1384F2EA3D683417D61 /* TABCommunicateServiceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TABCommunicateServiceManager.swift; sourceTree = "<group>"; };
 		371E46191CB2A8C300C248EF /* TABCommunicateResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TABCommunicateResult.swift; sourceTree = "<group>"; };
+		371E461B1CB2AEAB00C248EF /* TABCommunicable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TABCommunicable.swift; sourceTree = "<group>"; };
 		3754BFA81CB2739F00CDE7DB /* TABCommunicateConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TABCommunicateConfiguration.swift; sourceTree = "<group>"; };
 		3754BFAA1CB27FDD00CDE7DB /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		37E6C9861CAE56960086FC49 /* AnyTABCommunicateDelegateType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTABCommunicateDelegateType.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		CD7E4A40DCD17D0F5F68B5AB7B4A775F /* Pods-TABCommunicate_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TABCommunicate_Tests-dummy.m"; sourceTree = "<group>"; };
 		D061C272CADEE7BB1A4EFE52BF8A842C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D07DF2A69F911F0F0E72AB53757BE89A /* Pods-TABCommunicate_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TABCommunicate_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		D6CC23F42B7C95A1D36A6231742A02A7 /* TABCommunicatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TABCommunicatable.swift; sourceTree = "<group>"; };
 		DFD82AE38824D4B2089F5109A86617E7 /* Pods-TABCommunicate_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TABCommunicate_Tests-resources.sh"; sourceTree = "<group>"; };
 		E57B7801A82E355818210F1FD45FE43D /* Pods_TABCommunicate_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TABCommunicate_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0D2B34F7274CD01B41AF9E14F68275 /* Pods-TABCommunicate_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TABCommunicate_Example-resources.sh"; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 		2D6E40773ACA5DDE779D6CD8600E14C6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				371E461B1CB2AEAB00C248EF /* TABCommunicable.swift */,
 				3754BFAA1CB27FDD00CDE7DB /* DataHelper.swift */,
-				D6CC23F42B7C95A1D36A6231742A02A7 /* TABCommunicatable.swift */,
 				7D1EFA45BC4831BD0A314D4FC3FEFA2D /* TABCommunicator.swift */,
 				260184E56862C1384F2EA3D683417D61 /* TABCommunicateServiceManager.swift */,
 				37E6C9861CAE56960086FC49 /* AnyTABCommunicateDelegateType.swift */,
@@ -420,11 +420,11 @@
 			files = (
 				371E461A1CB2A8C300C248EF /* TABCommunicateResult.swift in Sources */,
 				3754BFA91CB2739F00CDE7DB /* TABCommunicateConfiguration.swift in Sources */,
-				CC9738850BF919F70F55D8385EDED463 /* TABCommunicatable.swift in Sources */,
 				968CE6EB4E04CBAD8E8EAFDDB86D47E3 /* TABCommunicate-dummy.m in Sources */,
 				3754BFAB1CB27FDD00CDE7DB /* DataHelper.swift in Sources */,
 				0B095FE3FD72A9B135851C12470B899A /* TABCommunicator.swift in Sources */,
 				37E6C9881CAE56E70086FC49 /* AnyTABCommunicateDelegateType.swift in Sources */,
+				371E461D1CB2AEBE00C248EF /* TABCommunicable.swift in Sources */,
 				574050E942CE107A9D55E4102BFBF97E /* TABCommunicateServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,15 +10,15 @@ import Foundation
 
 ///Allows conformer to recieve objects from the multipeer session
 public protocol TABCommunicatorDelegate: class {
-  associatedtype Object: TABCommunicatable
+  associatedtype Object: TABCommunicable
   /**
    Object recieved through multipeer connectivity
    **Most likely not on the main thread**
    
-   - parameter object: TABCommunicatable object recieved
+   - parameter object: TABCommunicable object recieved
    
    */
-  func communicatableObjectRecieved(object: Object)
+  func CommunicableObjectRecieved(object: Object)
   
   /**
    Peers have either left or joined the session informs current connection status
@@ -31,9 +31,9 @@ public protocol TABCommunicatorDelegate: class {
 
 /** 
  Allows caller to connect to multipeer session and send objects of the
- type T, where T conforms to TABCommunicatable.
+ type T, where T conforms to TABCommunicable.
 */
-public class TABCommunicator<T: TABCommunicatable> {
+public class TABCommunicator<T: TABCommunicable> {
   private var delegate: AnyTABCommunicatorDelegateType<T>?
   private var communicateServiceManager: TABCommunicateServiceManager?
   private var objectRecievedFunction: ((T) -> Void)?
@@ -41,7 +41,7 @@ public class TABCommunicator<T: TABCommunicatable> {
 
   /**
    Initialise with a Configuration and a delegate. The delegate Object type
-   (input value to the communicatableObjectRecieved function) **Must** equal
+   (input value to the CommunicableObjectRecieved function) **Must** equal
    the type being used to specialise the communicator instance other wise a
    compiler error will be thrown.
    
@@ -74,11 +74,11 @@ public class TABCommunicator<T: TABCommunicatable> {
   /**
    Send Object to all peers
    
-   - parameter object: TABCommunicatable object to send
+   - parameter object: TABCommunicable object to send
    
    */
-  public func sendCommunicatableObject(object: T, completion: (TABCommunicateResult) -> Void) {
-    communicateServiceManager?.sendCommunicatableObject(object, completion: completion)
+  public func sendCommunicableObject(object: T, completion: (TABCommunicateResult) -> Void) {
+    communicateServiceManager?.sendCommunicableObject(object, completion: completion)
   }
   
   /**
@@ -91,10 +91,10 @@ public class TABCommunicator<T: TABCommunicatable> {
 }
 
 extension TABCommunicator: TABCommunicateServiceManagerDelegate {
-  func communicatableDataRecieved(data: NSData) {
+  func CommunicableDataRecieved(data: NSData) {
     dispatch_async(dispatch_get_main_queue()) {
       let object = T.create(data)
-      self.delegate?.communicatableObjectRecieved(object)
+      self.delegate?.CommunicableObjectRecieved(object)
       self.objectRecievedFunction?(object)
     }
   }

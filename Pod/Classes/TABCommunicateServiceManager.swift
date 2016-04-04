@@ -10,7 +10,7 @@ import Foundation
 import MultipeerConnectivity
 
 protocol TABCommunicateServiceManagerDelegate: class {
-  func communicatableDataRecieved(data: NSData)
+  func CommunicableDataRecieved(data: NSData)
   func newNumberOfPeers(number: Int)
 }
 
@@ -43,7 +43,7 @@ class TABCommunicateServiceManager: NSObject {
     self.serviceBrowser.startBrowsingForPeers()
   }
   
-  func sendCommunicatableObject(object: TABCommunicatable, completion: (TABCommunicateResult) -> Void) {
+  func sendCommunicableObject(object: TABCommunicable, completion: (TABCommunicateResult) -> Void) {
     do {
       let data = try object.dataRepresentation()
       try session.sendData(data, toPeers: session.connectedPeers, withMode: .Reliable)
@@ -54,7 +54,7 @@ class TABCommunicateServiceManager: NSObject {
         retryCount += 1
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(configuration.retryDelay * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
-          self.sendCommunicatableObject(object, completion: completion)
+          self.sendCommunicableObject(object, completion: completion)
         }
         return
       }
@@ -104,7 +104,7 @@ extension TABCommunicateServiceManager: MCSessionDelegate {
   }
   
   func session(session: MCSession, didReceiveData data: NSData, fromPeer peerID: MCPeerID) {
-    delegate?.communicatableDataRecieved(data)
+    delegate?.CommunicableDataRecieved(data)
   }
   
   func session(session: MCSession, didReceiveStream stream: NSInputStream, withName streamName: String, fromPeer peerID: MCPeerID) {}

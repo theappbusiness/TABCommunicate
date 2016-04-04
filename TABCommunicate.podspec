@@ -20,10 +20,10 @@ Pod::Spec.new do |s|
                         Uses mulitpeer connectivity to send an object back and forth between iOS and Mac devices.
                        DESC
 
-  s.homepage         = "https://github.com/theappbusiness/TABCommunicate#tabcommunicatable"
+  s.homepage         = "https://github.com/theappbusiness/TABCommunicate#tabCommunicable"
   s.license          = 'MIT'
   s.author           = { "Neil" => "neil.horton@theappbusiness.com" }
-  s.source           = { :git => "git@bitbucket.org:theappbusiness/tabcommunicate.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/theappbusiness/TABCommunicate.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '9.0'
   s.requires_arc = true

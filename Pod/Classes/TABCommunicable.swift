@@ -1,5 +1,5 @@
 //
-//  TABCommunicatable.swift
+//  TABCommunicable.swift
 //  NHCommunicate
 //
 //  Created by Neil Horton on 29/03/2016.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol TABCommunicatable {
+public protocol TABCommunicable {
   static func create(data: NSData) -> Self
   func dataRepresentation() throws -> NSData
 }

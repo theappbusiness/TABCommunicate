@@ -24,24 +24,24 @@ The configuration object lets you describe how TABCommunicate will establish a c
 
 ###TABCommunicator
 
-To send and receive objects create and retain an instance of TABCommunicator passing a configuration. When we create an instance we define what object we want to send. This Object MUST conform to the TABCommunicatable protocol. There are two ways to initialize an instance of TABCommunicator depending on how you want to receive objects. The first specifies a delegate object that conforms to the TABCommunicatorDelegate protocol,
+To send and receive objects create and retain an instance of TABCommunicator passing a configuration. When we create an instance we define what object we want to send. This Object MUST conform to the TABCommunicable protocol. There are two ways to initialize an instance of TABCommunicator depending on how you want to receive objects. The first specifies a delegate object that conforms to the TABCommunicatorDelegate protocol,
 
 ```swift
-let communicator = TABCommunicator<SomeTABCommunicatable>(configuration, delegate: self)
+let communicator = TABCommunicator<SomeTABCommunicable>(configuration, delegate: self)
 ```
 
 The second passes a block (which is captured strongly) which handles the object being received.
 
 ```swift
-let communicator = TABCommunicator<SomeTABCommunicatable>(configuration) { someCommunicatable in
-  print(someCommunicatable)
+let communicator = TABCommunicator<SomeTABCommunicable>(configuration) { someCommunicable in
+  print(someCommunicable)
 }
 ```
 
 Send an object to connected peers with the following
 
 ```swift
-communicator.sendCommunicatableObject(myObject) { result in
+communicator.sendCommunicableObject(myObject) { result in
   switch result {
   case .Success:
     //Do something
@@ -51,12 +51,12 @@ communicator.sendCommunicatableObject(myObject) { result in
 }
 ```
 
-###TABCommunicatable
+###TABCommunicable
 
-In order to for a object to be sent and received it must conform to the TABCommunicatable protocol which requires the two functions
+In order to for a object to be sent and received it must conform to the TABCommunicable protocol which requires the two functions
 
 ```swift
-public protocol TABCommunicatable {
+public protocol TABCommunicable {
   static func create(data: NSData) -> Self
   func dataRepresentation() throws -> NSData
 }
@@ -68,7 +68,7 @@ The TABCommunicatorDelegate will receive updates when an object is sent and when
 
 ```swift
 extension ViewController: TABCommunicateDelegate {
-  func communicatableObjectRecieved(object: SomeTABCommunicatable) {
+  func CommunicableObjectRecieved(object: SomeTABCommunicable) {
     //Do something
   }
 
