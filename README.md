@@ -1,3 +1,5 @@
+![The App Business](https://github.com/theappbusiness/TABCommunicate/blob/master/Banner.png)
+
 # TABCommunicate
 
 A lightweight Multipeer connectivity wrapper to allow sending an object between devices
@@ -6,27 +8,29 @@ A lightweight Multipeer connectivity wrapper to allow sending an object between 
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-Create and instance of TABCommunicate specifying it to a TABCommunicatable type and specifying a unique service name up to fifteen characters
+###TABCommunicateConfiguration
+
+Create a TABCommunicateConfiguration like so
 
 ```swift
-let communicate = TABCommunicate<SomeTABCommunicatable>("myuniqueservice")
+let configuration = TABCommunicateConfiguration("myuniqueservice", numberOfRetryAttempts: 3, retryDelay: 1, password: "password")
 ```
 
-Now conform to the TABCommunicateDelegate protocol to receive objects and connection updates, note these updates do not currently come through on the main thread so if you are planning to update UI it's important to call out to the main thread here.
+The configuration object lets you describe how TABCommunicate will establish a connection to other devices and handle failures. numberOfRetryAttempts has a default value of 0 and retryDelay has a default value of 1.
+
+###TABCommunicator
+
+To send and receive objects create and retain an instance of TABCommunicator passing a configuration. When we create an instance we define what object we want to send. This Object MUST conform to the TABCommunicatable protocol. There are two ways to initialize an instance of TABCommunicator depending on how you want to receive objects. The first specifies a delegate object that conforms to the TABCommunicatorDelegate protocol,
 
 ```swift
-extension ViewController: TABCommunicateDelegate {
-  func communicatableObjectRecieved(object: TABCommunicatable) {
-    dispatch_async(dispatch_get_main_queue()) {
-      //Do something
-    }
-  }
+let communicator = TABCommunicator<SomeTABCommunicatable>(configuration, delegate: self)
+```
 
-  func connectionDidUpdate(connected: Bool) {
-    dispatch_async(dispatch_get_main_queue()) {
-      //Do something
-    }
-  }
+The second passes a block (which is captured strongly) which handles the object being received.
+
+```swift
+let communicator = TABCommunicator<SomeTABCommunicatable>(configuration) { someCommunicatable in
+  print(someCommunicatable)
 }
 ```
 
@@ -34,6 +38,33 @@ Send an object to connected peers with the following
 
 ```swift
 communicate.sendCommunicatableObject(myObject)
+```
+
+###TABCommunicatable
+
+In order to for a object to be sent and received it must conform to the TABCommunicatable protocol which requires the two functions
+
+```swift
+public protocol TABCommunicatable {
+  static func create(data: NSData) -> Self
+  func dataRepresentation() throws -> NSData
+}
+```
+
+###TABCommunicatorDelegate
+
+The TABCommunicatorDelegate must be a class not a struct (as it is retained weakly). The delegate will recieve updates when an object is sent and when the connection did update.
+
+```swift
+extension ViewController: TABCommunicateDelegate {
+  func communicatableObjectRecieved(object: SomeTABCommunicatable) {
+    //Do something
+  }
+
+  func connectionDidUpdate(connected: Bool) {
+    //Do something
+  }
+}
 ```
 
 ## Requirements
@@ -46,13 +77,12 @@ TABCommunicate is available through [CocoaPods](http://cocoapods.org). To instal
 it, simply add the following line to your Podfile:
 
 ```ruby
-source 'git@bitbucket.org:theappbusiness/tab-pods.git'
 pod "TABCommunicate"
 ```
 
 ## Author
 
-Neil, neil.horton@theappbusiness.com
+Neil3079, neil.horton@theappbusiness.com
 
 ## License
 
