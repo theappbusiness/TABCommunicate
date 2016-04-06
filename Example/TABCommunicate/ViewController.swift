@@ -12,7 +12,7 @@ import TABCommunicate
 class ViewController: UIViewController {
   
   var communicator: TABCommunicator<Test>?
-  let communicateConfiguration = TABCommunicateConfiguration(serviceName: "test", numberOfRetryAttempts: 3, retryDelay: 1, password: "password")
+  let communicateConfiguration = TABCommunicateConfiguration(serviceName: "test", numberOfRetryAttempts: 3, retryDelay: 1, identity: .None)
   @IBOutlet weak var resultLabel: UILabel!
   @IBOutlet weak var textField: UITextField!
   
@@ -48,5 +48,9 @@ extension ViewController: TABCommunicatorDelegate {
   
   func connectionDidUpdate(connected: Bool) {
     self.view.backgroundColor = connected ? UIColor.greenColor() : UIColor.redColor()
+  }
+  
+  func validateCertificate(certificate: [SecCertificateRef]?) -> Bool {
+    return true
   }
 }
