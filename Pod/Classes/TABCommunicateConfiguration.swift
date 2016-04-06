@@ -23,11 +23,10 @@ public struct TABCommunicateConfiguration {
    Time delay in seconds between retry attempts
    */
   let retryDelay: NSTimeInterval
-  
   /**
-   Unique phrase to ensure only known users can join session
-   */
-  let password: String
+   Array consisting of [ SecIdentityRef, [ zero or more additional certs ] ]
+  */
+  let identity: [AnyObject]?
   
   /**
    The serviceName parameter is a short text string used to describe the
@@ -45,28 +44,15 @@ public struct TABCommunicateConfiguration {
    
    - parameter numberOfRetryAttempts: Number of times framework will attempt to send the object if transfer fails. Default value of 0
    
-    - parameter retryDelay: Time delay in seconds between retry attempts. Default value of 1
+   - parameter retryDelay: Time delay in seconds between retry attempts. Default value of 1
    
+   - parameter identity: Array consisting of [ SecIdentityRef, [ zero or more additional certs ] ]
    
    */
-  public init(serviceName: String, numberOfRetryAttempts: Int = 0, retryDelay: NSTimeInterval = 1, password: String) {
+  public init(serviceName: String, numberOfRetryAttempts: Int = 0, retryDelay: NSTimeInterval = 1, identity: [AnyObject]?) {
     self.serviceName = serviceName
     self.numberOfRetryAttempts = numberOfRetryAttempts
     self.retryDelay = retryDelay
-    self.password = password
-  }
-  
-  func createServiceContext() -> NSData {
-    let dict = ["serviceName": serviceName, "password": password]
-    return DataHelper.toDataFromDict(dict)
-  }
-  
-  func verifyContext(context: NSData) -> Bool {
-    guard let
-      contextDict = try? DataHelper.toDictFromData(context),
-      contextServiceName = contextDict["serviceName"] as? String,
-      contextPassword = contextDict["password"] as? String
-      else { return false }
-    return contextServiceName == serviceName && contextPassword == password
+    self.identity = identity
   }
 }
