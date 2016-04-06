@@ -17,25 +17,17 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 Create a TABCommunicateConfiguration like so
 
 ```swift
-let configuration = TABCommunicateConfiguration("myuniqueservice", numberOfRetryAttempts: 3, retryDelay: 1, password: "password")
+let configuration = TABCommunicateConfiguration("myuniqueservice", numberOfRetryAttempts: 3, retryDelay: 1, identity: nil)
 ```
 
-The configuration object lets you describe how TABCommunicate will establish a connection to other devices and handle failures. numberOfRetryAttempts has a default value of 0 and retryDelay has a default value of 1.
+The configuration object lets you describe how TABCommunicate will establish a connection to other devices and handle failures. numberOfRetryAttempts has a default value of 0 and retryDelay has a default value of 1. In the identity field you can pass a certificate chain to enable you to identify and authenticate yourself to other devices.
 
 ###TABCommunicator
 
-To send and receive objects create and retain an instance of TABCommunicator passing a configuration. When we create an instance we define what object we want to send. This Object MUST conform to the TABCommunicable protocol. There are two ways to initialize an instance of TABCommunicator depending on how you want to receive objects. The first specifies a delegate object that conforms to the TABCommunicatorDelegate protocol,
+To send and receive objects create and retain an instance of TABCommunicator passing a configuration. When we create an instance we define what object we want to send. This Object MUST conform to the TABCommunicable protocol. We must also pass an object of type TABCommunicatorDelegate on initialization. This will handle receiving objects, authenticating certificates and updates indicating if a any peers are connected,
 
 ```swift
 let communicator = TABCommunicator<SomeTABCommunicable>(configuration, delegate: self)
-```
-
-The second passes a block (which is captured strongly) which handles the object being received.
-
-```swift
-let communicator = TABCommunicator<SomeTABCommunicable>(configuration) { someCommunicable in
-  print(someCommunicable)
-}
 ```
 
 Send an object to connected peers with the following
@@ -64,7 +56,7 @@ public protocol TABCommunicable {
 
 ###TABCommunicatorDelegate
 
-The TABCommunicatorDelegate will receive updates when an object is sent and when the connection did update.
+The TABCommunicatorDelegate will receive updates when an object is sent and when the connection did update. It is also in charge of deciding if we trust a peer enough to connect to it based on their certificate.
 
 ```swift
 extension ViewController: TABCommunicateDelegate {
@@ -74,6 +66,11 @@ extension ViewController: TABCommunicateDelegate {
 
   func connectionDidUpdate(connected: Bool) {
     //Do something
+  }
+
+  func validateCertificate(certificate: [SecCertificateRef]?) -> Bool {
+    //Decide if we trust this certificate
+    return trustCertificate ? true : false
   }
 }
 ```
