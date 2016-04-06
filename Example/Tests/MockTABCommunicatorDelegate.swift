@@ -14,7 +14,8 @@ class MockTABCommunicatorDelegate: TABCommunicatorDelegate {
   var capturedCommunicable: MockTABCommunicable?
   var capturedConnected: Bool?
   var expectation: XCTestExpectation?
-  
+  var mockValidateCertificateResponse: Bool?
+  var validateCertificateCallCount = 0
   
   func communicableObjectRecieved(object: MockTABCommunicable) {
     capturedCommunicable = object
@@ -24,5 +25,10 @@ class MockTABCommunicatorDelegate: TABCommunicatorDelegate {
   func connectionDidUpdate(connected: Bool) {
     capturedConnected = connected
     expectation?.fulfill()
+  }
+  
+  func validateCertificate(certificate: [SecCertificateRef]?) -> Bool {
+    validateCertificateCallCount += 1
+    return mockValidateCertificateResponse ?? false
   }
 }

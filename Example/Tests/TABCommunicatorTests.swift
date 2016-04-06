@@ -13,7 +13,7 @@ class TABCommunicatorTests: XCTestCase {
   
   var sut: TABCommunicator<MockTABCommunicable>!
   var delegate: MockTABCommunicatorDelegate!
-  let testConfiguration = TABCommunicateConfiguration(serviceName: "test", numberOfRetryAttempts: 3, retryDelay: 0.1, password: "testPassword")
+  let testConfiguration = TABCommunicateConfiguration(serviceName: "test", numberOfRetryAttempts: 3, retryDelay: 0.1, identity: .None)
   
   override func setUp() {
     super.setUp()
@@ -60,22 +60,23 @@ class TABCommunicatorTests: XCTestCase {
     }
   }
   
-  func test_communicableDataRecieved_passesObjectToInitialisedBlock() {
-    let expectation = expectationWithDescription("Object passed to block")
-    sut = TABCommunicator(configuration: testConfiguration) { _ in
-      expectation.fulfill()
-    }
-    let validData = DataHelper.toDataFromDict(["test": "test"])
-    sut.communicableDataRecieved(validData)
-    waitForExpectationsWithTimeout(2.0) { error in
-      if error != nil { XCTFail() }
-    }
-  }
-  
   func test_sendCommunicableObject_callsServiceAndSetsCompletion() {
     let mockService = MockTABCommunicateServiceManager()
     sut.communicateServiceManager = mockService
     sut.sendCommunicableObject(MockTABCommunicable()) {result in}
     XCTAssertNotNil(mockService.capturedCompletion)
+  }
+  
+  func test_validateCertificateWhenCertificateArrayIsNilCallsDelegate() {
+    delegate.mockValidateCertificateResponse = true
+    XCTAssert(sut.validateCertificate(.None))
+    XCTAssert(delegate.validateCertificateCallCount == 1)
+  }
+  
+  func test_validateCertificateWhenCertificateArrayIsSecRefsCallsDelegate() {
+    delegate.mockValidateCertificateResponse = true
+    let certificateArray: [SecCertificateRef] = []
+    XCTAssert(sut.validateCertificate(certificateArray))
+    XCTAssert(delegate.validateCertificateCallCount == 1)
   }
 }

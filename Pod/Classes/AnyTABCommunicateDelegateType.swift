@@ -12,10 +12,12 @@ class AnyTABCommunicatorDelegateType<T: TABCommunicable>: TABCommunicatorDelegat
   
   private let _communicableObjectRecieved: (T) -> Void
   private let _connectionDidUpdate: (Bool) -> Void
+  private let _validateCertificate: [SecCertificateRef]? -> Bool
   
   init<U: TABCommunicatorDelegate where U.Object == T>(_ delegate: U) {
     _communicableObjectRecieved = delegate.communicableObjectRecieved
     _connectionDidUpdate = delegate.connectionDidUpdate
+    _validateCertificate = delegate.validateCertificate
   }
   
   func communicableObjectRecieved(object: T) {
@@ -24,5 +26,9 @@ class AnyTABCommunicatorDelegateType<T: TABCommunicable>: TABCommunicatorDelegat
   
   func connectionDidUpdate(connected: Bool) {
     _connectionDidUpdate(connected)
+  }
+  
+  func validateCertificate(certificate: [SecCertificateRef]?) -> Bool {
+    return _validateCertificate(certificate)
   }
 }

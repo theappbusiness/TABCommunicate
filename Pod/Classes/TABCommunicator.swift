@@ -27,6 +27,17 @@ public protocol TABCommunicatorDelegate: class {
    
    */
   func connectionDidUpdate(connected: Bool)
+  
+  /**
+  Function used to validate a certifacte recieved from a peer trying to
+  connect.
+   
+  - parameter certificate: A certificate chain, presented as an array of SecCertificateRef certificate objects. The first certificate in this chain is the peer’s certificate, which is derived from the identity that the peer provided when it called the initWithPeer:securityIdentity:encryptionPreference: method. The other certificates are the (optional) additional chain certificates provided in that same array.
+    If the nearby peer did not provide a security identity, then this parameter’s value is nil.
+   
+   - returns: Boolean indicating weather or not the app trusts this certificate and wants to connect.
+  */
+  func validateCertificate(certificate: [SecCertificateRef]?) -> Bool
 }
 
 /** 
@@ -34,9 +45,8 @@ public protocol TABCommunicatorDelegate: class {
  type T, where T conforms to TABCommunicable.
 */
 public class TABCommunicator<T: TABCommunicable> {
-  private var delegate: AnyTABCommunicatorDelegateType<T>?
+  private let delegate: AnyTABCommunicatorDelegateType<T>
   var communicateServiceManager: TABCommunicateServiceManager?
-  private var objectRecievedFunction: ((T) -> Void)?
   private let config: TABCommunicateConfiguration
 
   /**
@@ -56,21 +66,6 @@ public class TABCommunicator<T: TABCommunicable> {
     self.config = configuration
     self.communicateServiceManager = TABCommunicateServiceManager(configuration: configuration, delegate: self)
   }
-  
-  /**
-   
-   - parameter configuration: TABCommunicateConfiguration containing details on how the
-   communication should be configured.
-   
-   - parameter objectRecieved: Block to be called when object is recieved, **captured strongly**.
-   
-   */
-  public init(configuration: TABCommunicateConfiguration, objectRecieved: (T) -> Void) {
-    self.objectRecievedFunction = objectRecieved
-    self.config = configuration
-    self.communicateServiceManager = TABCommunicateServiceManager(configuration: configuration, delegate: self)
-  }
-  
   /**
    Send Object to all peers
    
@@ -94,14 +89,23 @@ extension TABCommunicator: TABCommunicateServiceManagerDelegate {
   func communicableDataRecieved(data: NSData) {
     dispatch_async(dispatch_get_main_queue()) {
       let object = T.create(data)
-      self.delegate?.communicableObjectRecieved(object)
-      self.objectRecievedFunction?(object)
+      self.delegate.communicableObjectRecieved(object)
     }
   }
   
   func newNumberOfPeers(number: Int) {
     dispatch_async(dispatch_get_main_queue()) {
-      self.delegate?.connectionDidUpdate(number > 0)
+      self.delegate.connectionDidUpdate(number > 0)
     }
+  }
+  
+  func validateCertificate(certificate: [AnyObject]?) -> Bool {
+    guard let certificateArray = certificate else {
+      return delegate.validateCertificate(.None)
+    }
+    guard let certificateChain = certificateArray as? [SecCertificateRef] else {
+      return false
+    }
+    return delegate.validateCertificate(certificateChain)
   }
 }

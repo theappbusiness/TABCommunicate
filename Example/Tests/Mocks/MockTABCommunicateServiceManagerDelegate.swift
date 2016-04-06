@@ -13,6 +13,7 @@ class MockTABCommunicateServiceManagerDelegate: TABCommunicateServiceManagerDele
   
   var capturedData: NSData?
   var capturedNumberOfPeers: Int?
+  var mockValidateCertificateResponse: Bool?
   
   func communicableDataRecieved(data: NSData) {
     capturedData = data
@@ -20,5 +21,9 @@ class MockTABCommunicateServiceManagerDelegate: TABCommunicateServiceManagerDele
   
   func newNumberOfPeers(number: Int) {
     capturedNumberOfPeers = number
+  }
+  
+  func validateCertificate(certificate: [AnyObject]?) -> Bool {
+    return mockValidateCertificateResponse ?? false
   }
 }

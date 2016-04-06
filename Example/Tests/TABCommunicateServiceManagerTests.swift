@@ -18,7 +18,7 @@ class TABCommunicateServiceManagerTests: XCTestCase {
   var mockSession: MockMultipeerSession!
   let peer = MCPeerID(displayName: "test")
   
-  let testConfiguration = TABCommunicateConfiguration(serviceName: "test", numberOfRetryAttempts: 3, retryDelay: 0.1, password: "testPassword")
+  let testConfiguration = TABCommunicateConfiguration(serviceName: "test", numberOfRetryAttempts: 3, retryDelay: 0.1, identity: .None)
 
   override func setUp() {
     super.setUp()
@@ -73,6 +73,42 @@ class TABCommunicateServiceManagerTests: XCTestCase {
       if error != nil { XCTFail() }
     }
   }
+  
+  func test_sessionDidRecieveCertificateWhenDelegateIsNilCallsCompletionHandlerWithFalse() {
+    sut.delegate = .None
+    let expectation = expectationWithDescription("Result block called")
+    sut.session(mockSession, didReceiveCertificate: .None, fromPeer: peer) {response in
+      expectation.fulfill()
+      XCTAssert(!response)
+    }
+    waitForExpectationsWithTimeout(2.0) { error in
+      if error != nil { XCTFail() }
+    }
+  }
+  
+  func test_sessionDidRecieveCertificateWhenDelegateReturnsFalseCallsCompletionHandlerWithFalse() {
+    mockDelegate.mockValidateCertificateResponse = false
+    let expectation = expectationWithDescription("Result block called")
+    sut.session(mockSession, didReceiveCertificate: .None, fromPeer: peer) {response in
+      expectation.fulfill()
+      XCTAssert(!response)
+    }
+    waitForExpectationsWithTimeout(2.0) { error in
+      if error != nil { XCTFail() }
+    }
+  }
+  
+  func test_sessionDidRecieveCertificateWhenDelegateReturnsTrueCallsCompletionHandlerWithFalse() {
+    mockDelegate.mockValidateCertificateResponse = true
+    let expectation = expectationWithDescription("Result block called")
+    sut.session(mockSession, didReceiveCertificate: .None, fromPeer: peer) {response in
+      expectation.fulfill()
+      XCTAssert(response)
+    }
+    waitForExpectationsWithTimeout(2.0) { error in
+      if error != nil { XCTFail() }
+    }
+  }
     
   func test_sendCommunicableObject_whenErrorThrownRetriesCorrectNumberOfTimes() {
     let expectation = expectationWithDescription("Result block called")
@@ -90,36 +126,10 @@ class TABCommunicateServiceManagerTests: XCTestCase {
     }
   }
   
-  func test_advetiserDidRecieveInvitation_withValidContextCallsTrueInCompletion() {
-    let validContext = testConfiguration.createServiceContext()
-    let expectation = expectationWithDescription("Result block called")
-    let advetiser = MCNearbyServiceAdvertiser(peer: peer, discoveryInfo: .None, serviceType: "test")
-    sut.advertiser(advetiser, didReceiveInvitationFromPeer: peer, withContext: validContext) { acceptance, session
-      in
-      expectation.fulfill()
-      XCTAssert(acceptance)
-    }
-    waitForExpectationsWithTimeout(2.0) { error in
-      if error != nil { XCTFail() }
-    }
-  }
-  
   func test_browserLostPeer_informsDelegate() {
     let browser = MCNearbyServiceBrowser(peer: peer, serviceType: "test")
     sut.browser(browser, lostPeer: peer)
     XCTAssert(mockDelegate.capturedNumberOfPeers! == 0)
-  }
-  
-  func test_sessionDidRecieveCertificate_callsTrueInCompletion() {
-    let expectation = expectationWithDescription("Result block called")
-    sut.session(mockSession, didReceiveCertificate: .None, fromPeer: peer) { result in
-      expectation.fulfill()
-      XCTAssert(result)
-    }
-    waitForExpectationsWithTimeout(2.0) { error in
-      if error != nil { XCTFail() }
-      XCTAssertNotNil(self.mockDelegate.capturedNumberOfPeers)
-    }
   }
   
   func test_sessionDidRecieveData_callsDelegate() {

@@ -11,7 +11,7 @@ import Foundation
 
 class MockTABCommunicateServiceManager: TABCommunicateServiceManager {
   
-  let configuration = TABCommunicateConfiguration(serviceName: "name", password: "password")
+  let configuration = TABCommunicateConfiguration(serviceName: "name", identity: .None)
   var capturedCompletion: ((TABCommunicateResult) -> Void)?
   
   init() {

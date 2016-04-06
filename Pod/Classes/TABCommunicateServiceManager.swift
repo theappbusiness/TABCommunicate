@@ -12,6 +12,7 @@ import MultipeerConnectivity
 protocol TABCommunicateServiceManagerDelegate: class {
   func communicableDataRecieved(data: NSData)
   func newNumberOfPeers(number: Int)
+  func validateCertificate(certificate: [AnyObject]?) -> Bool
 }
 
 class TABCommunicateServiceManager: NSObject {
@@ -22,11 +23,7 @@ class TABCommunicateServiceManager: NSObject {
   private let configuration: TABCommunicateConfiguration
   private var retryCount: Int = 0
   
-  lazy var session : MCSession = {
-    let session = MCSession(peer: self.myPeerID, securityIdentity: nil, encryptionPreference: .Required)
-    session.delegate = self
-    return session
-  }()
+  var session : MCSession?
   
   weak var delegate: TABCommunicateServiceManagerDelegate?
   
@@ -41,9 +38,16 @@ class TABCommunicateServiceManager: NSObject {
     self.serviceAdvertiser.startAdvertisingPeer()
     self.serviceBrowser.delegate = self
     self.serviceBrowser.startBrowsingForPeers()
+    self.createSession()
+  }
+  
+  func createSession() {
+    session = MCSession(peer: self.myPeerID, securityIdentity: self.configuration.identity , encryptionPreference: .Required)
+    session?.delegate = self
   }
   
   func sendCommunicableObject(object: TABCommunicable, completion: (TABCommunicateResult) -> Void) {
+    guard let session = session else { return }
     do {
       let data = try object.dataRepresentation()
       try session.sendData(data, toPeers: session.connectedPeers, withMode: .Reliable)
@@ -65,6 +69,7 @@ class TABCommunicateServiceManager: NSObject {
   deinit {
     self.serviceAdvertiser.stopAdvertisingPeer()
     self.serviceBrowser.stopBrowsingForPeers()
+    self.session?.disconnect()
   }
   
 }
@@ -76,19 +81,19 @@ extension TABCommunicateServiceManager: MCNearbyServiceAdvertiserDelegate {
   }
   
   func advertiser(advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: NSData?, invitationHandler: (Bool, MCSession) -> Void) {
-    if let recievedContext = context where configuration.verifyContext(recievedContext) {
-      invitationHandler(true, self.session)
-    }
+    guard let session = session else { return }
+    invitationHandler(true, session)
   }
 }
 
 extension TABCommunicateServiceManager: MCNearbyServiceBrowserDelegate {
   func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-    guard peerID.displayName.containsString(configuration.serviceName) else { return }
-    browser.invitePeer(peerID, toSession: session, withContext: configuration.createServiceContext(), timeout: 10)
+    guard peerID.displayName.containsString(configuration.serviceName), let session = session else { return }
+    browser.invitePeer(peerID, toSession: session, withContext: nil, timeout: 10)
   }
   
   func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+    guard let session = session else { return }
     delegate?.newNumberOfPeers(session.connectedPeers.count)
   }
 }
@@ -97,8 +102,8 @@ extension TABCommunicateServiceManager: MCSessionDelegate {
   func session(session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, atURL localURL: NSURL, withError error: NSError?) {}
   
   func session(session: MCSession, didReceiveCertificate certificate: [AnyObject]?, fromPeer peerID: MCPeerID, certificateHandler: (Bool) -> Void) {
-    certificateHandler(true)
-    delegate?.newNumberOfPeers(session.connectedPeers.count)
+    let trustCertificate = delegate?.validateCertificate(certificate) ?? false
+    certificateHandler(trustCertificate)
   }
   
   func session(session: MCSession, didReceiveData data: NSData, fromPeer peerID: MCPeerID) {
