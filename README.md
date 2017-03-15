@@ -12,7 +12,7 @@ A lightweight, strongly typed Multipeer connectivity wrapper to allow sending an
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-###TABCommunicateConfiguration
+### TABCommunicateConfiguration
 
 Create a TABCommunicateConfiguration like so
 
@@ -22,7 +22,7 @@ let configuration = TABCommunicateConfiguration("myuniqueservice", numberOfRetry
 
 The configuration object lets you describe how TABCommunicate will establish a connection to other devices and handle failures. numberOfRetryAttempts has a default value of 0 and retryDelay has a default value of 1.
 
-###TABCommunicator
+### TABCommunicator
 
 To send and receive objects create and retain an instance of TABCommunicator passing a configuration. When we create an instance we define what object we want to send. This Object MUST conform to the TABCommunicable protocol. There are two ways to initialize an instance of TABCommunicator depending on how you want to receive objects. The first specifies a delegate object that conforms to the TABCommunicatorDelegate protocol,
 
@@ -51,7 +51,7 @@ communicator.sendCommunicableObject(myObject) { result in
 }
 ```
 
-###TABCommunicable
+### TABCommunicable
 
 In order to for a object to be sent and received it must conform to the TABCommunicable protocol which requires the two functions
 
@@ -62,7 +62,7 @@ public protocol TABCommunicable {
 }
 ```
 
-###TABCommunicatorDelegate
+### TABCommunicatorDelegate
 
 The TABCommunicatorDelegate will receive updates when an object is sent and when the connection did update.
 
